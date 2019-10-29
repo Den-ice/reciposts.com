@@ -20,7 +20,33 @@
             <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
         </div>
         
+        <div id = "moveFilter" > l </div>
+
+        
+        <a href="#" id="signInText" onclick='SignInClick()'> Sign in</a>
+        <div id="signL"> |</div>
+        <a href="#" id="signUpText" onclick='SignUpClick()'> Sign up</a>
+
+        <div id="signInBox">
+            <input id = "signInEmail" type="text">
+            <input id = "signInPassword" type="text">
+                
+            <a href="#" id="signIn">Sign In</a>
+
+        </div>
+        
+        <div id="signUpBox">
+            <input id = "email" type="text">
+            <input id = "fullName" type="text">
+            <input id = "username" type="text">
+            <input id = "password" type="text">
+                
+            <a href="#" id="signUp">Sign Up</a>
+
+        </div>
+        
         <div class="post_list" >
+            
             <div id="post"  style = "top:5vw">
                 <img id = "postImage" src="postImage/1.jpg" >
                 <img id = "userImage" src="svg/defualt.svg" onclick='profileClick()'>
@@ -131,7 +157,19 @@
 
 
         <script>
-            document.getElementById("searchText").value = "food";
+            document.getElementById("searchText").value = "Search Recipes";
+            document.getElementById("email").value = "Email";
+            document.getElementById("fullName").value = "Full Name";
+            document.getElementById("username").value = "Username";
+            document.getElementById("password").value = "Password";
+
+            document.getElementById("signInEmail").value = "Email";
+            document.getElementById("signInPassword").value = "Password";
+            document.getElementById("signInBox").style.display = 'none';
+
+            document.getElementById("moveFilter").innerHTML = "<<";
+
+            
             document.getElementById("pageText").value = 0;
         function profileClick() {
         }
@@ -154,6 +192,16 @@
         function endPageClick() {
             document.getElementById("pageText").value=10;
         }
+        
+        function SignUpClick() {
+            document.getElementById("signUpBox").style.display = 'block';
+            document.getElementById("signInBox").style.display = 'none';
+        }
+        function SignInClick(){
+            document.getElementById("signUpBox").style.display = 'none';
+            document.getElementById("signInBox").style.display = 'block';
+        }
+        
         </script>
     </body>
 </html>
