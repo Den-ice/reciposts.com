@@ -2,8 +2,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>reciposts</title>
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
+        <link rel="stylesheet" type="text/css" href="css/bottomNavigation.css">
+        <link rel="stylesheet" type="text/css" href="css/postList.css">
+        <link rel="stylesheet" type="text/css" href="css/signIn_signUp.css">
+        <link rel="stylesheet" type="text/css" href="css/filter.css">
+        <link rel="stylesheet" type="text/css" href="css/timeFilter.css">
+
+
     </head>
     <body>
         
@@ -20,9 +29,48 @@
             <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
         </div>
         
-        <div id = "moveFilter" > l </div>
+        <div id = "moveFilter" onclick='moveFilterClick()'> l </div>
+
+        <div id = "Filter" >
+            
+            <div id = "FilterTxt" >Filter</div>
+            <div id = "DifficultyTxt" >Difficulty:</div>
+
+            <div id="DifficultyScale">
+                 <svg id="Difficulty1"  height="100%"    width="100%" viewBox="0 0 50 50">
+                     <circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="0" id = "1"/>
+                 </svg>
+                 <svg id="Difficulty2" height="100%"    width="100%" viewBox="0 0 50 50">
+                     <circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2"/>
+                 </svg>
+                 <svg id="Difficulty3" height="100%"    width="100%" viewBox="0 0 50 50">
+                     <circle cx="50%" cy="50%" r="40%" fill="orange " stroke ="black" stroke-width="0" id = "3"/>
+                 </svg>
+                 <svg id="Difficulty4" height="100%"    width="100%" viewBox="0 0 50 50">
+                     <circle cx="50%" cy="50%" r="40%" fill="red "stroke ="black" stroke-width="0" id = "4"/>
+                 </svg>
+             </div>
+            
+            <div id = "timeBox" >
+                <img id = "timeClock" src="svg/clock.svg" >
+                <div id = "timeFilter-select">
+                    <div class="timeFilter-select">
+                      <select>
+                        <option value="0">&ge;</option>
+                        <option value="1">&le;</option>
+                        <option value="2">=</option>
+                      </select>
+                    </div>
+                </div>
+                <input id = "hour" type="number">
+                <div id = "textColonTime">:</div>
+                <input id = "min" type="number">
+
+            </div>
 
         
+        </div>
+
         <a href="#" id="signInText" onclick='SignInClick()'> Sign in</a>
         <div id="signL"> |</div>
         <a href="#" id="signUpText" onclick='SignUpClick()'> Sign up</a>
@@ -53,7 +101,7 @@
                 <div id="userName">RACHAEL RAY</div>
                 <div id="foodTitle">The Gobbler Sandwich</div>
                 <svg id="foodDifficulty">
-                    <circle cx="50%" cy="50%" r="30%" fill="Chartreuse " id="1"/>
+                    <circle cx="50%" cy="50%" r="30%" fill="Chartreuse "/>
                 </svg>
                 <img id = "clock" src="svg/clock.svg" >
                 <div id="time">0h 17m</div>
@@ -73,7 +121,7 @@
                           <div id="userName">COOKIE MONSTER</div>
                           <div id="foodTitle">Thanksgiving Gobbler</div>
                           <svg id="foodDifficulty">
-                              <circle cx="50%" cy="50%" r="30%" fill="orange " id="1"/>
+                              <circle cx="50%" cy="50%" r="30%" fill="orange "/>
                           </svg>
                           <img id = "clock" src="svg/clock.svg" >
                           <div id="time">0h 30m</div>
@@ -94,7 +142,7 @@
                           <div id="userName">COOKIE MONSTER</div>
                           <div id="foodTitle">Cranberry Orange Sauce</div>
                           <svg id="foodDifficulty">
-                              <circle cx="50%" cy="50%" r="30%" fill="red " id="1"/>
+                              <circle cx="50%" cy="50%" r="30%" fill="red "/>
                           </svg>
                           <img id = "clock" src="svg/clock.svg" >
                           <div id="time">0h 40m</div>
@@ -115,7 +163,7 @@
                           <div id="userName">EPICURIOUS</div>
                           <div id="foodTitle">Grilled Pork Chops</div>
                           <svg id="foodDifficulty">
-                              <circle cx="50%" cy="50%" r="30%" fill="yellow " id="1"/>
+                              <circle cx="50%" cy="50%" r="30%" fill="yellow "/>
                           </svg>
                           <img id = "clock" src="svg/clock.svg" >
                           <div id="time">0h 30m</div>
@@ -154,54 +202,11 @@
             </div>
             
         </div>
-
-
-        <script>
-            document.getElementById("searchText").value = "Search Recipes";
-            document.getElementById("email").value = "Email";
-            document.getElementById("fullName").value = "Full Name";
-            document.getElementById("username").value = "Username";
-            document.getElementById("password").value = "Password";
-
-            document.getElementById("signInEmail").value = "Email";
-            document.getElementById("signInPassword").value = "Password";
-            document.getElementById("signInBox").style.display = 'none';
-
-            document.getElementById("moveFilter").innerHTML = "<<";
-
-            
-            document.getElementById("pageText").value = 0;
-        function profileClick() {
-        }
-        function notificationClick() {
-        }
-        function searchClick() {
-        }
         
-        function startPageClick() {
-            document.getElementById("pageText").value=0;
-        }
-        function leftArowClick() {
-            if (document.getElementById("pageText").value != 0){
-                document.getElementById("pageText").value -= 1;
-            }
-        }
-        function rightArowArowClick() {
-            document.getElementById("pageText").value = parseInt(document.getElementById("pageText").value) + 1;
-        }
-        function endPageClick() {
-            document.getElementById("pageText").value=10;
-        }
-        
-        function SignUpClick() {
-            document.getElementById("signUpBox").style.display = 'block';
-            document.getElementById("signInBox").style.display = 'none';
-        }
-        function SignInClick(){
-            document.getElementById("signUpBox").style.display = 'none';
-            document.getElementById("signInBox").style.display = 'block';
-        }
-        
-        </script>
+        <script src="js/nav.js"></script>
+        <script src="js/signUp_signIn.js"></script>
+        <script src="js/filter.js"></script>
+        <script src="js/timeFilter.js"></script>
+
     </body>
 </html>
