@@ -1,5 +1,49 @@
 
 body {
-    background-color:  rgb(250, 250, 250);
+    background-color:  rgb(245, 245, 245);
     overflow: hidden;
+}
+
+#buttonPost {
+    position: absolute;
+    bottom:0%;
+    right: 0px;
+    background-color:  rgb(245, 245, 245);
+     padding: 2vh 4vh;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 4vh;
+     cursor: pointer;
+     
+     color: grey;
+     border: 1px solid grey;
+     border-radius: 3px;
+
+}
+
+.post{
+    background-color:  rgb(255, 255, 255);
+    width: 80%;
+    height: 70%;
+
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    
+    margin-right: auto;
+    margin-left: auto;
+    
+    overflow-y: scroll;
+    z-index: -1;
+}
+
+/*more needs to be added to handle dif browsers*/
+.post::-webkit-scrollbar {
+ display: none;
 }
