@@ -17,46 +17,39 @@ function moveFilterClick(){
     }
 }
 
-var diff1sel = false;
-var diff2sel = false;
-var diff3sel = false;
-var diff4sel = false;
+var diff = 1;
 
 document.getElementById("1").onclick = function (e) {
-    if (diff1sel == false){
-        document.getElementById('1').setAttribute("stroke-width", "3");
-        diff1sel = true
-    } else {
-        document.getElementById('1').setAttribute("stroke-width", "0");
-        diff1sel = false
-    }
+    document.getElementById('1').setAttribute("stroke-width", "3");
+    document.getElementById('2').setAttribute("stroke-width", "0");
+    document.getElementById('3').setAttribute("stroke-width", "0");
+    document.getElementById('4').setAttribute("stroke-width", "0");
+
+    diff1sel = 1;
+   
 };
 
 document.getElementById("2").onclick = function (e) {
-           if (diff2sel == false){
-               document.getElementById('2').setAttribute("stroke-width", "3");
-               diff2sel = true
-           } else {
-               document.getElementById('2').setAttribute("stroke-width", "0");
-               diff2sel = false
-           }
+           document.getElementById('1').setAttribute("stroke-width", "0");
+           document.getElementById('2').setAttribute("stroke-width", "3");
+           document.getElementById('3').setAttribute("stroke-width", "0");
+           document.getElementById('4').setAttribute("stroke-width", "0");
+    diff1sel = 2;
+
 };
 document.getElementById("3").onclick = function (e) {
-           if (diff3sel == false){
-               document.getElementById('3').setAttribute("stroke-width", "3");
-               diff3sel = true
-           } else {
-               document.getElementById('3').setAttribute("stroke-width", "0");
-               diff3sel = false
-           }
+       document.getElementById('1').setAttribute("stroke-width", "0");
+       document.getElementById('2').setAttribute("stroke-width", "0");
+       document.getElementById('3').setAttribute("stroke-width", "3");
+       document.getElementById('4').setAttribute("stroke-width", "0");
+    diff1sel = 3;
+
 };
 
 document.getElementById("4").onclick = function (e) {
-           if (diff4sel == false){
-               document.getElementById('4').setAttribute("stroke-width", "3");
-               diff4sel = true
-           } else {
-               document.getElementById('4').setAttribute("stroke-width", "0");
-               diff4sel = false
-           }
+           document.getElementById('1').setAttribute("stroke-width", "0");
+           document.getElementById('2').setAttribute("stroke-width", "0");
+           document.getElementById('3').setAttribute("stroke-width", "0");
+           document.getElementById('4').setAttribute("stroke-width", "3");
+    diff1sel = 4;
 };

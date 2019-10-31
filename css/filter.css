@@ -22,7 +22,7 @@
 #Filter {
              background-color: rgb(245, 245, 245);
              position: absolute;
-             right: 0;
+             right: -35%;
              top: 14%;
              font-size: 3vh;
              z-index: 3;
@@ -42,7 +42,7 @@
 #FilterTxt {
     position: absolute;
     left: 0px;
-    top: 0px;
+    top: -5%;
     font-size: 4vh;
     text-decoration: none;
     width: 100%;
@@ -52,7 +52,7 @@
 #DifficultyScale{
     position: absolute;
     left: 0px;
-    top: 15%;
+    top: 5%;
     font-size: 4vh;
     color: grey;
     text-decoration: none;
@@ -64,7 +64,7 @@
 #DifficultyTxt {
     position: absolute;
     left: 0px;
-    top: 10%;
+    top: 2%;
     font-size: 3vh;
     color: grey;
     text-decoration: none;
@@ -113,7 +113,7 @@
 #timeBox{
     position: absolute;
     left: 0px;
-    top: 25%;
+    top: 15%;
     font-size: 4vh;
     color: grey;
     text-decoration: none;
@@ -160,7 +160,7 @@
     
     outline: none;
     border: transparent;
-    font-size: 2vh;
+    font-size: 3vw;
     text-align: center;
 }
 #min {
@@ -171,12 +171,12 @@
     margin-top: auto;
     margin-bottom: auto;
     height: 50%;
-    width: 15%;
+    width: 20%;
     left: 80%;
     
     outline: none;
     border: transparent;
-    font-size: 2vh;
+    font-size: 3vw;
     text-align: center;
 }
 

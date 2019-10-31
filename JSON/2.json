@@ -1,0 +1,11 @@
+{"userName": "COOKIE MONSTER",
+    "imageID" : "2",
+    "foodTitle" : "Thanksgiving Gobbler",
+    "hours" : "0",
+    "min" : "30",
+    "description": "a sandwich for after thanksgiving",
+    "rating": [5,4,4,5,5,3],
+    "difficulty": 3
+}
+
+

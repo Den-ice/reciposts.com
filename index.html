@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>reciposts</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
         <link rel="stylesheet" type="text/css" href="css/bottomNavigation.css">
@@ -12,7 +12,11 @@
         <link rel="stylesheet" type="text/css" href="css/filter.css">
         <link rel="stylesheet" type="text/css" href="css/timeFilter.css">
 
+            
+        <script src="js/jquery-3.3.1.js"></script>
 
+        
+        
     </head>
     <body>
         
@@ -38,7 +42,7 @@
 
             <div id="DifficultyScale">
                  <svg id="Difficulty1"  height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="0" id = "1"/>
+                     <circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="3" id = "1"/>
                  </svg>
                  <svg id="Difficulty2" height="100%"    width="100%" viewBox="0 0 50 50">
                      <circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2"/>
@@ -93,94 +97,7 @@
 
         </div>
         
-        <div class="post_list" >
-            
-            <div id="post"  style = "top:5vw">
-                <img id = "postImage" src="postImage/1.jpg" >
-                <img id = "userImage" src="svg/defualt.svg" onclick='profileClick()'>
-                <div id="userName">RACHAEL RAY</div>
-                <div id="foodTitle">The Gobbler Sandwich</div>
-                <svg id="foodDifficulty">
-                    <circle cx="50%" cy="50%" r="30%" fill="Chartreuse "/>
-                </svg>
-                <img id = "clock" src="svg/clock.svg" >
-                <div id="time">0h 17m</div>
-                
-                <img id = "star1" src="svg/star.svg">
-                <img id = "star2" src="svg/star.svg">
-                <img id = "star3" src="svg/star.svg">
-                <img id = "star4" src="svg/star.svg">
-                <img id = "star5" src="svg/star.svg">
-
-                <div id="description">when you want to gobble a sandwich down for lunch</div>
-
-            </div>
-           <div id="post"  style = "top:50vw">
-                          <img id = "postImage" src="postImage/2.jpg" >
-                          <img id = "userImage" src="svg/defualt.svg" onclick='profileClick()'>
-                          <div id="userName">COOKIE MONSTER</div>
-                          <div id="foodTitle">Thanksgiving Gobbler</div>
-                          <svg id="foodDifficulty">
-                              <circle cx="50%" cy="50%" r="30%" fill="orange "/>
-                          </svg>
-                          <img id = "clock" src="svg/clock.svg" >
-                          <div id="time">0h 30m</div>
-                          
-                          <img id = "star1" src="svg/star.svg">
-                          <img id = "star2" src="svg/star.svg">
-                          <img id = "star3" src="svg/star.svg">
-                          <img id = "star4" src="svg/star.svg">
-                          <img id = "star5" src="svg/star.svg">
-
-                          <div id="description">a sandwich for after thanksgiving</div>
-
-            </div>
-           
-           <div id="post"  style = "top:95vw">
-                          <img id = "postImage" src="postImage/3.jpg" >
-                          <img id = "userImage" src="svg/defualt.svg" onclick='profileClick()'>
-                          <div id="userName">COOKIE MONSTER</div>
-                          <div id="foodTitle">Cranberry Orange Sauce</div>
-                          <svg id="foodDifficulty">
-                              <circle cx="50%" cy="50%" r="30%" fill="red "/>
-                          </svg>
-                          <img id = "clock" src="svg/clock.svg" >
-                          <div id="time">0h 40m</div>
-                          
-                          <img id = "star1" src="svg/star.svg">
-                          <img id = "star2" src="svg/star.svg">
-                          <img id = "star3" src="svg/star.svg">
-                          <img id = "star4" src="svg/star.svg">
-                          <img id = "star5" src="svg/star.svg">
-
-                          <div id="description">sweet Cranberry Sauce</div>
-
-            </div>
-           
-           <div id="post"  style = "top:140vw">
-                          <img id = "postImage" src="postImage/4.jpg" >
-                          <img id = "userImage" src="svg/defualt.svg" onclick='profileClick()'>
-                          <div id="userName">EPICURIOUS</div>
-                          <div id="foodTitle">Grilled Pork Chops</div>
-                          <svg id="foodDifficulty">
-                              <circle cx="50%" cy="50%" r="30%" fill="yellow "/>
-                          </svg>
-                          <img id = "clock" src="svg/clock.svg" >
-                          <div id="time">0h 30m</div>
-                          
-                          <img id = "star1" src="svg/star.svg">
-                          <img id = "star2" src="svg/star.svg">
-                          <img id = "star3" src="svg/star.svg">
-                          <img id = "star4" src="svg/star.svg">
-                          <img id = "star5" src="svg/star.svg">
-
-                          <div id="description">Pork Chops with a Maple-Cranberry Glaze</div>
-
-            </div>
-           
-           <div id="spacer"  style = "top:180vw">
-            </div>
-
+        <div class="post_list" id = "post_list">
 
         </div>
         
@@ -207,6 +124,7 @@
         <script src="js/signUp_signIn.js"></script>
         <script src="js/filter.js"></script>
         <script src="js/timeFilter.js"></script>
+        <script src="js/postList.js"></script>
 
     </body>
 </html>
