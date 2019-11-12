@@ -16,68 +16,30 @@
         
     </head>
     <body>
-        
-        <div class="top_Navigation">
-            <div id = "tittle">Reciposts</div>
-            
-            <div id = "searchBar" >
-                <img id = "searchImg" src="svg/search.svg" onclick='searchClick()'>
-                <input id = "searchText" type="text">
-            </div>
+                      
+            <div class="top_Navigation">
+                <div id = "tittle">Reciposts</div>
                 
-            <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
-                
-            <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
-        </div>
-        
-        <div id = "moveFilter" onclick='moveFilterClick()'> l </div>
-
-        <div id = "Filter" >
-            
-            <div id = "FilterTxt" >Filter</div>
-            <div id = "DifficultyTxt" >Difficulty:</div>
-
-            <div id="DifficultyScale">
-                 <svg id="Difficulty1"  height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="3" id = "1"/>
-                 </svg>
-                 <svg id="Difficulty2" height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2"/>
-                 </svg>
-                 <svg id="Difficulty3" height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="orange " stroke ="black" stroke-width="0" id = "3"/>
-                 </svg>
-                 <svg id="Difficulty4" height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="red "stroke ="black" stroke-width="0" id = "4"/>
-                 </svg>
-             </div>
-            
-            <div id = "timeBox" >
-                <img id = "timeClock" src="svg/clock.svg" >
-                <div id = "timeFilter-select">
-                    <div class="timeFilter-select">
-                      <select>
-                        <option value="0">&ge;</option>
-                        <option value="1">&le;</option>
-                        <option value="2">=</option>
-                      </select>
-                    </div>
+                <div id = "searchBar" >
+                    <img id = "searchImg" src="svg/search.svg" onclick='searchClick()'>
+                    <input id = "searchText" type="text">
                 </div>
-                <input id = "hour" type="number">
-                <div id = "textColonTime">:</div>
-                <input id = "min" type="number">
-
+            
+                <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()' >
+                
+                <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
             </div>
 
-        
-        </div>
+            <div class="profile_page">
+                <div id="background_border" style="top:5vw">
+                    <img id="defaultprofile" src="svg/profiledefault.svg">                </div>
+                    
+            </div>
+            <script src="js/profile.js"></script>
 
+     
         
-        
-        
-       <script src="js/profile.js"></script>
-        <script src="js/filter.js"></script>
-        <script src="js/timeFilter.js"></script>
+
 
     </body>
 </html>
