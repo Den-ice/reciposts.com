@@ -1,15 +1,13 @@
 .profile_page {
-    background-color:  rgb(245, 245, 245);
+    background-color: rgb(245, 245, 245);
     width: 100%;
-    height: 80%;
-
+    height: 90%;
     position: absolute;
     bottom: 0px;
     top: 0px;
     left: 0px;
-
     margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: 0px;
     overflow-y: scroll;
     z-index: -1;
 }
@@ -20,22 +18,89 @@
 }
 
 #background_border {
-    
-    background-color:  rgb(255, 255, 255);
-     width: 60%;
-     height: 40vw;
-     
-     position: absolute;
-     left: 5%;
+    background-color: rgb(255, 255, 255);
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    left: 5%;
      
 }
+
 #defaultprofile {
-     height: 100%;
-     width: 40%;
+    height: 15vw;
+    width: 15vw;
+    position: absolute;
+    left: 5%;
+    right: 80%;
+    top: 10%;
+    bottom: 58%;
+    object-fit: contain;
 
-     position: absolute;
-     left: 0px;
-     bottom: 0px;
-     object-fit: contain;
+}
+#username {
+    width: 13vw;
+    height: 4vw;
+    position: absolute;
+    left: 25vw;
+    top: 9vw;
+    font-size: 3vw;
+    color: grey;
+}
 
+#editButton {
+    width: 4vw;
+    height: 5vw;
+    object-fit: contain;
+    position: absolute;
+    left: 56%;
+    top: 14%;
+}
+
+#postcount {
+    width: 13vw;
+    height: 4vw;
+    position: absolute;
+    left: 23vw;
+    top: 17vw;
+    font-size: 2.5vw;
+    color: grey;
+}
+
+#followers {
+    width: 13vw;
+    height: 4vw;
+    position: absolute;
+    left: 34vw;
+    top: 17vw;
+    font-size: 2.5vw;
+    color: grey;
+}
+
+#following {
+    width: 13vw;
+    height: 4vw;
+    position: absolute;
+    left: 49vw;
+    top: 17vw;
+    font-size: 2.5vw;
+    color: grey;
+}
+
+#ToPostPage {
+    height: 7vw;
+    position: absolute;
+    width: 12vw;
+    /* bottom: 26vw; */
+    top: 8vw;
+    right: 19vw;
+    background-color: rgb(146, 226, 200);
+    padding: 2vh 4vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 4vh;
+    cursor: pointer;
+    color: #f3fffe;
+    border: lightseagreen;
+    border-radius: 3px;
 }
