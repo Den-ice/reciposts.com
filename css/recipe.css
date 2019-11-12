@@ -4,29 +4,25 @@ body {
     overflow: hidden;
 }
 .recipe {
-    background-color:  rgb(245, 245, 245);
-    width: 100%;
-    height: 100%;
+    background-color:  rgb(255, 255, 255);
+    width: 90%;
+    height: 80%;
 
     position: absolute;
     bottom: 0px;
-    top: 15%;
-    left: 0px;
+    top: 10%;
+    left: 5%;
 
     margin-top: auto;
     margin-bottom: auto;
     overflow-y: scroll;
     z-index: -1;
 }
-
-#post {
-    background-color:  rgb(255, 255, 255);
-     width: 90%;
-     height: 100%;
-     position: absolute;
-     left: 5%;
-     
+/*more needs to be added to handle dif browsers*/
+.recipe::-webkit-scrollbar {
+ display: none;
 }
+
 #postImage {
      height: 40%;
      width: 40%;
