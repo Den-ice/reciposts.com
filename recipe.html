@@ -1,83 +1,84 @@
-
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
-        <link rel="stylesheet" type="text/css" href="css/recipe.css">
-        <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
-        <link rel="stylesheet" type="text/css" href="css/filter.css">
-        <link rel="stylesheet" type="text/css" href="css/timeFilter.css">
-
-            
-        <script src="js/jquery-3.3.1.js"></script>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
+    <link rel="stylesheet" type="text/css" href="css/recipe.css">
 
         
+    <script src="js/jquery-3.3.1.js"></script>
+
+    <!--############## NAVIGATION BAR #################-->
+    <div class="top_Navigation">
+        <div id="tittle">Reciposts</div>
         
-    </head>
-    <body>
-        
-        <div class="top_Navigation">
-            <div id = "tittle">Reciposts</div>
-            
-            <div id = "searchBar" >
-                <img id = "searchImg" src="svg/search.svg" onclick='searchClick()'>
-                <input id = "searchText" type="text">
-            </div>
-                
-            <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
-                
-            <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
+        <div id="searchBar">
+            <img id="searchImg" src="svg/search.svg" onclick="searchClick()">
+            <input id="searchText" type="text">
         </div>
-        
-        <div id = "moveFilter" onclick='moveFilterClick()'> l </div>
-
-        <div id = "Filter" >
             
-            <div id = "FilterTxt" >Filter</div>
-            <div id = "DifficultyTxt" >Difficulty:</div>
-
-            <div id="DifficultyScale">
-                 <svg id="Difficulty1"  height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="3" id = "1"/>
-                 </svg>
-                 <svg id="Difficulty2" height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2"/>
-                 </svg>
-                 <svg id="Difficulty3" height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="orange " stroke ="black" stroke-width="0" id = "3"/>
-                 </svg>
-                 <svg id="Difficulty4" height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="red "stroke ="black" stroke-width="0" id = "4"/>
-                 </svg>
-             </div>
+        <img id="profileButton" src="svg/man-user.svg" onclick="profileClick()">
             
-            <div id = "timeBox" >
-                <img id = "timeClock" src="svg/clock.svg" >
-                <div id = "timeFilter-select">
-                    <div class="timeFilter-select">
-                      <select>
-                        <option value="0">&ge;</option>
-                        <option value="1">&le;</option>
-                        <option value="2">=</option>
-                      </select>
-                    </div>
-                </div>
-                <input id = "hour" type="number">
-                <div id = "textColonTime">:</div>
-                <input id = "min" type="number">
+        <img id="notificationButton" src="svg/notification.svg" onclick="notificationClick()">
+    </div>
+    
+</head>
+<body>
 
+    
+    <!--############## Displaying Recipe #################-->
+    <div class="recipe" id="recipe">
+        <div style="top:5vw"id="post" ></div>
+        <div style="top:50vw"id="post" ></div>
+            <!--users recipe image-->
+            <img id="postImage" src="https://www.thespruceeats.com/thmb/6RVrs5P-BeETGASoLZV218oUFRM=/1624x1218/smart/filters:no_upscale()/beer-batter-fried-fish-18-57bbac303df78c876353eaf3.jpg">                                
+            <!--Profile image, username, recipe title, recipe difficulty-->
+            <img id="userImage" src="svg/defualt.svg" onclick="profileClick()">  
+            <div id="userName">FishFryer</div>                                                  
+            <div id="foodTitle">Fried Cod Meal</div>                                                
+            <svg id="foodDifficulty">                                                                       
+                <circle cx="50%" cy="50%" r="30%" fill="Chartreuse"></circle>                                 
+            </svg>                       
+            <!--time for how long recipe takes-->
+            <img id="clock" src="svg/clock.svg">                                                     
+            <div id="time">0h 45m</div>
+            <!--Difficulty star images-->
+            <img id="star1" src="svg/starGreen.svg">
+            <img id="star2" src="svg/starGreen.svg">
+            <img id="star3" src="svg/starGreen.svg">
+            <img id="star4" src="svg/star.svg">
+            <img id="star5" src="svg/star.svg">
+            
+            <div id="description">Easy quick hot meal</div>
+
+            <div id="recipe_steps">
+                    <h1>Step 1</h1>
+                    <p>This is a paragraph.</p>
+                    <h1>Step 2</h1>
+                    <p>This is a paragraph.</p>
+                    <h1>Step 3</h1>
+                    <p>This is a paragraph.</p>
             </div>
 
-        
-        </div>
+            <div id="ingredients">
+                    <h1>Ingredients</h1>
+                    <p>yep</p>
+                    <p>yep</p>
+                    <p>yep</p>
+                    <p>yep</p> 
+            </div>
+    </div>
+          
 
-        
-        
-        
-       <script src="js/recipe.js"></script>
-        <script src="js/filter.js"></script>
-        <script src="js/timeFilter.js"></script>
+    <!--############## End of Recipe #################-->
+    
+                
+    <script src="js/nav.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/timeFilter.js"></script>
+    
 
-    </body>
-</html>
+
+
+</body></html>
