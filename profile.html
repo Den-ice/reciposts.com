@@ -1,106 +1,53 @@
-.profile_page {
-    background-color: rgb(245, 245, 245);
-    width: 100%;
-    height: 90%;
-    position: absolute;
-    bottom: 0px;
-    top: 0px;
-    left: 0px;
-    margin-top: auto;
-    margin-bottom: 0px;
-    overflow-y: scroll;
-    z-index: -1;
-}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
+        <link rel="stylesheet" type="text/css" href="css/profile.css">
+        <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
+        <link rel="stylesheet" type="text/css" href="css/filter.css">
+        <link rel="stylesheet" type="text/css" href="css/timeFilter.css">
 
-/*more needs to be added to handle dif browsers*/
-.profile_page::-webkit-scrollbar {
- display: none;
-}
 
-#background_border {
-    background-color: rgb(255, 255, 255);
-    width: 90%;
-    height: 90%;
-    position: absolute;
-    left: 5%;
-     
-}
+        <script src="js/jquery-3.3.1.js"></script>
 
-#defaultprofile {
-    height: 15vw;
-    width: 15vw;
-    position: absolute;
-    left: 5%;
-    right: 80%;
-    top: 10%;
-    bottom: 58%;
-    object-fit: contain;
 
-}
-#username {
-    width: 13vw;
-    height: 4vw;
-    position: absolute;
-    left: 25vw;
-    top: 9vw;
-    font-size: 3vw;
-    color: grey;
-}
 
-#editButton {
-    width: 4vw;
-    height: 5vw;
-    object-fit: contain;
-    position: absolute;
-    left: 56%;
-    top: 14%;
-}
+    </head>
+    <body>
 
-#postcount {
-    width: 13vw;
-    height: 4vw;
-    position: absolute;
-    left: 23vw;
-    top: 17vw;
-    font-size: 2.5vw;
-    color: grey;
-}
+        <div class="top_Navigation">
+            <div id = "tittle">Reciposts</div>
 
-#followers {
-    width: 13vw;
-    height: 4vw;
-    position: absolute;
-    left: 34vw;
-    top: 17vw;
-    font-size: 2.5vw;
-    color: grey;
-}
+            <div id = "searchBar" >
+                <img id = "searchImg" src="svg/search.svg" onclick='searchClick()'>
+                <input id = "searchText" type="text">
+            </div>
 
-#following {
-    width: 13vw;
-    height: 4vw;
-    position: absolute;
-    left: 49vw;
-    top: 17vw;
-    font-size: 2.5vw;
-    color: grey;
-}
+            <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
 
-#ToPostPage {
-    height: 7vw;
-    position: absolute;
-    width: 12vw;
-    /* bottom: 26vw; */
-    top: 8vw;
-    right: 19vw;
-    background-color: rgb(146, 226, 200);
-    padding: 2vh 4vh;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 4vh;
-    cursor: pointer;
-    color: #f3fffe;
-    border: lightseagreen;
-    border-radius: 3px;
-}
+            <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
+        </div>
+
+        <div class="profile_page">
+            <div id="background_border" style="top:5vw">
+                    <img id="defaultprofile" src="svg/profiledefault.svg">
+                <div id="username">Username</div>
+                <img id="editButton" src="svg/edit-button.svg" >
+                <div class="counts">
+                    <div id="postcount"># Posts</div>
+                    <div id="followers"># Followers</div>
+                    <div id="following"># Following</div>
+                </div>
+                <button id="ToPostPage">Post</button>
+            </div>
+
+        </div>
+
+
+       <script src="js/profile.js"></script>
+        <script src="js/filter.js"></script>
+        <script src="js/timeFilter.js"></script>
+
+    </body>
+</html>
