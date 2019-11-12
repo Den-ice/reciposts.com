@@ -3,3 +3,174 @@ body {
     background-color:  rgb(250, 250, 250);
     overflow: hidden;
 }
+.recipe {
+    background-color:  rgb(245, 245, 245);
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    bottom: 0px;
+    top: 15%;
+    left: 0px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    overflow-y: scroll;
+    z-index: -1;
+}
+
+#post {
+    background-color:  rgb(255, 255, 255);
+     width: 90%;
+     height: 100%;
+     position: absolute;
+     left: 5%;
+     
+}
+#postImage {
+     height: 40%;
+     width: 40%;
+     left: 25px;
+     position: absolute;
+     object-fit: contain;
+
+}
+
+#userImage {
+     width: 10%;
+     height: 10%;
+     object-fit: contain;
+     position: absolute;
+     left: 45%;
+     top: 5%;
+}
+#userName {
+     width: 50%;
+     height: 10%;
+     position: absolute;
+     left: 55%;
+     top: 10%;
+     font-size: 3vw;
+     color: grey;
+
+}
+
+#foodTitle {
+     width: 50%;
+     height: 20%;
+     
+     position: absolute;
+     left: 47%;
+     top: 16%;
+     font-size: 4vw;
+     color: darkgray;
+
+}
+
+#foodDifficulty {
+     width: 10%;
+     height: 10vw;
+     
+     position: absolute;
+     left: 45%;
+     top: 20%;
+
+}
+
+#clock {
+     width: 7%;
+     height: 10vw;
+     
+     position: absolute;
+     left: 55%;
+     top: 20%;
+     object-fit: contain;
+
+}
+#time {
+     width: 30%;
+     height: 20%;
+     
+     position: absolute;
+     left: 65%;
+     top: 24%;
+     font-size: 3vw;
+}
+#star1 {
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    left: 45%;
+    top: 30%;
+    
+}
+#star2 {
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    left: 55%;
+    top: 30%;
+    
+}
+#star3 {
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    left: 65%;
+    top: 30%;
+    
+}
+#star4 {
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    left: 75%;
+    top: 30%;
+    
+}
+#star5 {
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    left: 85%;
+    top: 30%;
+    
+}
+#description {
+     width: 60%;
+     height: 45%;
+     
+     position: absolute;
+     left: 45%;
+     top: 45%;
+     font-size: 3vw;
+     color: darkgray;
+}
+#recipe_steps {
+    width: 60%;
+    height: 45%;
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 3vw;
+    color: darkgray;
+}
+#ingredients {
+    width: 60%;
+    height: 45%;
+    
+    position: absolute;
+    left: 10%;
+    top: 45%;
+    font-size: 3vw;
+    color: darkgray;
+}
+#spacer {
+     width: 60%;
+     height: 10vw;
+     
+     position: absolute;
+     left: 5%;
+
+}
