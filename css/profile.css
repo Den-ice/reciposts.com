@@ -1,5 +1,41 @@
+.profile_page {
+    background-color:  rgb(245, 245, 245);
+    width: 100%;
+    height: 80%;
 
-body {
-    background-color:  rgb(250, 250, 250);
-    overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    overflow-y: scroll;
+    z-index: -1;
+}
+
+/*more needs to be added to handle dif browsers*/
+.profile_page::-webkit-scrollbar {
+ display: none;
+}
+
+#background_border {
+    
+    background-color:  rgb(255, 255, 255);
+     width: 60%;
+     height: 40vw;
+     
+     position: absolute;
+     left: 5%;
+     
+}
+#defaultprofile {
+     height: 100%;
+     width: 40%;
+
+     position: absolute;
+     left: 0px;
+     bottom: 0px;
+     object-fit: contain;
+
 }
