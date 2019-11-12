@@ -14,6 +14,15 @@
 
             
         <script src="js/jquery-3.3.1.js"></script>
+        
+
+        <!--  needed for amazon-->
+        <script src="js/jquery-3.3.1.js"></script>
+        <script src="js/amazon/amazon-cognito-auth.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+        <script src="js/amazon/amazon-cognito-identity.js"></script>
+        <script src="js/amazon/config.js"></script>
+        <!--  needed for amazon-->
 
         
         
@@ -25,7 +34,7 @@
             
             <div id = "searchBar" >
                 <img id = "searchImg" src="svg/search.svg" onclick='searchClick()'>
-                <input id = "searchText" type="text">
+                <input id = "searchText" type="text" placeholder="Search Recipes">
             </div>
                 
             <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
@@ -80,20 +89,25 @@
         <a href="#" id="signUpText" onclick='SignUpClick()'> Sign up</a>
 
         <div id="signInBox">
-            <input id = "signInEmail" type="text">
-            <input id = "signInPassword" type="text">
+            <input id = "signInEmail" type="email" placeholder="Email" pattern=".*" required>
+            <input id = "signInPassword" type="password" placeholder="Password" pattern=".*" required>
                 
-            <a href="#" id="signIn">Sign In</a>
+            <div id="signInInfo"></div>
+
+            <a href="#" id="signIn" onclick='signInButton()'>Sign In</a>
 
         </div>
         
         <div id="signUpBox">
-            <input id = "email" type="text">
-            <input id = "fullName" type="text">
-            <input id = "username" type="text">
-            <input id = "password" type="text">
+            <input id = "email" type="email" placeholder="Email" pattern=".*" required>
+            <input id = "fullName" type="text" placeholder="User name" pattern=".*" required>
+            <input id = "password" type="password" placeholder="Password" pattern=".*" required>
+            <input id = "confirmationpassword" type="password" placeholder="Confirm Password" pattern=".*" required>
                 
-            <a href="#" id="signUp">Sign Up</a>
+            <div id="signUpInfo"></div>
+
+            <a href="#" id="signUp" onclick='registerButton()'>Sign Up</a>
+            
 
         </div>
         

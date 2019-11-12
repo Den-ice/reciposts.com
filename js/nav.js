@@ -1,11 +1,5 @@
 document.getElementById("searchText").value = "Search Recipes";
-         document.getElementById("email").value = "Email";
-         document.getElementById("fullName").value = "Full Name";
-         document.getElementById("username").value = "Username";
-         document.getElementById("password").value = "Password";
 
-         document.getElementById("signInEmail").value = "Email";
-         document.getElementById("signInPassword").value = "Password";
          document.getElementById("signInBox").style.display = 'none';
 
          document.getElementById("moveFilter").innerHTML = "<<";
