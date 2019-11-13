@@ -28,39 +28,50 @@
     
     <!--############## Post Entry #################-->
     <div class="recipePost" id="recipePost">
-			<div id = "col1">
-				<img id = "postImage" src="svg/emptyImage.svg">
-				<span id = "imgImportTxt">Import Image</span>
-				<input id = "imgImport" type = "file" accept = "image/*">
-				<p>Description</p>
-				<input id = "desc" type= "text" placeholder ="Tell us about your recipe!">
-				<p>Instructions</p>
-				<input id = "Instruc" placeholder ="Give step by step directions on how you made your recipe!">
-            </div>
-			<div id = "col2">
-				<div style ="block">
-                    <span id="titleTxt">Title</span>
-				    <input id = "title" placeholder = "Name of your recipe">
-				</div>
-				<span id = "tagTxt">Tags </span>
-				<input id = "tags" placeholder = "Tag your recipe with keywords">
-				<button id = "appendTag" onclick = 'appendTag()'>+</button>
-             </div>
-				<div>
-					<div style ="display:inline-block">
-						<span id = "IngredTitle">Ingredients</span>
-						<input id = "Ingred">
-						<br>
-						<span id = "AmtTitle">Amount</span>
-						<input id = "Amount">
-					</div>
-					<div style ="display:inline-block">
-						<button id ="appendIngred" onclick = 'appendIngred()'>+</button>
-					</div>
-				</div>
-				
-			</div>
+	<div id = "col1">
+		
+		<!--Image Field-->
+		<img id = "postImage" src="svg/emptyImage.svg">
+		<span id = "imgImportTxt">Import Image</span>
+		<input id = "imgImport" type = "file" accept = "image/*">
+		
+		<!--Description Field-->
+		<p>Description</p>
+		<input id = "desc" type= "text" placeholder ="Tell us about your recipe!">
+		
+		<!--Instruction Field-->
+		<p>Instructions</p>
+		<input id = "Instruc" placeholder ="Give step by step directions on how you made your recipe!">
+		
+	</div>
+	<div id = "col2">
+	
+		<!--Title Field-->
+		<div style ="block">
+			<span id="titleTxt">Title</span>
+			<input id = "title" placeholder = "Name of your recipe">
 		</div>
+		
+		<!--Tag Field-->
+		<span id = "tagTxt">Tags </span>
+		<input id = "tags" placeholder = "Tag your recipe with keywords">
+		<button id = "appendTag" onclick = 'appendTag()'>+</button>
+		
+    	</div>
+	<div>
+		<div style ="display:inline-block">
+			<span id = "IngredTitle">Ingredients</span>
+			<input id = "Ingred">
+			<br>
+			<span id = "AmtTitle">Amount</span>
+			<input id = "Amount">
+		</div>
+		<div style ="display:inline-block">
+			<button id ="appendIngred" onclick = 'appendIngred()'>+</button>
+		</div>
+	</div>
+				
+	</div>
 
         
         <button id="buttonPost">Post</button>
