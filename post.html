@@ -1,89 +1,96 @@
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
-        <link rel="stylesheet" type="text/css" href="css/post.css">
-        <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
-        <link rel="stylesheet" type="text/css" href="css/filter.css">
-        <link rel="stylesheet" type="text/css" href="css/timeFilter.css">
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
+    <link rel="stylesheet" type="text/css" href="css/post.css">
+        
+    <script src="js/jquery-3.3.1.js"></script>
 
-            
-        <script src="js/jquery-3.3.1.js"></script>
-
+    <!--############## NAVIGATION BAR #################-->
+    <div class="top_Navigation">
+        <div id="tittle">Reciposts</div>
         
-        
-    </head>
-    <body>
-        
-        <div class="top_Navigation">
-            <div id = "tittle">Reciposts</div>
-            
-            <div id = "searchBar" >
-                <img id = "searchImg" src="svg/search.svg" onclick='searchClick()'>
-                <input id = "searchText" type="text">
-            </div>
-                
-            <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
-                
-            <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
+        <div id="searchBar">
+            <img id="searchImg" src="svg/search.svg" onclick="searchClick()">
+            <input id="searchText" type="text">
         </div>
-        
-        <div id = "moveFilter" onclick='moveFilterClick()'> l </div>
-
-        <div id = "Filter" >
             
-            <div id = "FilterTxt" >Filter</div>
-            <div id = "DifficultyTxt" >Difficulty:</div>
-
-            <div id="DifficultyScale">
-                 <svg id="Difficulty1"  height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="3" id = "1"/>
-                 </svg>
-                 <svg id="Difficulty2" height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2"/>
-                 </svg>
-                 <svg id="Difficulty3" height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="orange " stroke ="black" stroke-width="0" id = "3"/>
-                 </svg>
-                 <svg id="Difficulty4" height="100%"    width="100%" viewBox="0 0 50 50">
-                     <circle cx="50%" cy="50%" r="40%" fill="red "stroke ="black" stroke-width="0" id = "4"/>
-                 </svg>
-             </div>
+        <img id="profileButton" src="svg/man-user.svg" onclick="profileClick()">
             
-            <div id = "timeBox" >
-                <img id = "timeClock" src="svg/clock.svg" >
-                <div id = "timeFilter-select">
-                    <div class="timeFilter-select">
-                      <select>
-                        <option value="0">&ge;</option>
-                        <option value="1">&le;</option>
-                        <option value="2">=</option>
-                      </select>
-                    </div>
-                </div>
-                <input id = "hour" type="number">
-                <div id = "textColonTime">:</div>
-                <input id = "min" type="number">
+        <img id="notificationButton" src="svg/notification.svg" onclick="notificationClick()">
+    </div>
+    
+</head>
+<body>
+    
+    <!--############## Post Entry #################-->
+    <div class="recipePost" id="recipePost">
+        <div style="top:5vw"id="post" ></div>
+        <div style="top:50vw"id="post" ></div>
+            <!--users recipe image-->
+            <img id="postImage" src="svg/emptyImage.svg">   
 
+            <!--recipe title-->                                               
+            <div id="foodTitle">
+            <form action="/action_page.php">
+                Title: <input type="text" name="title"><br>
+              </form>
             </div>
 
-        
-        </div>
 
-        <div class = "post" >
-        
-        <img id = "postImage" src="svg/emptyImage.svg">
+            <!--Difficulty-->
+            <div id="difficulty">Select Difficulty:                                         
+                <svg id="foodDifficulty">                                                                       
+                    <circle cx="50%" cy="50%" r="30%" fill="Chartreuse"></circle>                                 
+                </svg>              
+
+
+            <!--time for how long recipe takes-->
+            <img id="clock" src="svg/clock.svg">  
+            <!--Time for the recipe-->
+            <div id="time">
+                <form action="/action_page.php">
+                    <input type="number" name="">h 
+                    <input type="number" name="">m<br>
+                  </form>
             </div>
 
-        
-        <button id="buttonPost">Post</button>
+            <!--Description form-->
+            <div id="description">
+                <form action="/action_page.php">
+                    Description:<input type="text" name=""><br>
+                  </form>
+            </div>
 
-        
-       <script src="js/post.js"></script>
-        <script src="js/filter.js"></script>
-        <script src="js/timeFilter.js"></script>
+            <!--Recipe instructions-->
+            <div id="recipe_steps">
+                <form action="/action_page.php">
+                    <h1>Instructions:</h1>
+                    <input type="text" name=""><br>
+                </form>
+            </div>
 
-    </body>
-</html>
+            <div id="ingredients">
+                <form action="/action_page.php">
+                    <h1>Ingredients:</h1>
+                    Item:<input type="text" name=""><br>
+                    Amount:<input type="text" name=""><br>
+                </form>
+            </div>
+    </div>
+          
+
+    <!--############## End of Post #################-->
+    
+                
+    <script src="js/nav.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/timeFilter.js"></script>
+    
+
+
+
+</body></html>
