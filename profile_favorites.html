@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
+        <link rel="stylesheet" type="text/css" href="css/profile_favorites.css">
+        <link rel="stylesheet" type="text/css" href="css/profile.css">
+        <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
+        <link rel="stylesheet" type="text/css" href="css/filter.css">
+        <link rel="stylesheet" type="text/css" href="css/timeFilter.css">
+
+
+        <script src="js/jquery-3.3.1.js"></script>
+
+
+
+    </head>
+    <body>
+
+        <div class="top_Navigation">
+            <div id = "tittle">Reciposts</div>
+
+            <div id = "searchBar" >
+                <img id = "searchImg" src="svg/search.svg" onclick='searchClick()'>
+                <input id = "searchText" type="text">
+            </div>
+
+            <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
+
+            <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
+        </div>
+<!--
+        <div id = "moveFilter" onclick='moveFilterClick()'> l </div>
+
+        <div id = "Filter" >
+
+            <div id = "FilterTxt" >Filter</div>
+            <div id = "DifficultyTxt" >Difficulty:</div>
+
+            <div id="DifficultyScale">
+                 <svg id="Difficulty1"  height="100%"    width="100%" viewBox="0 0 50 50">
+                     <circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="3" id = "1"/>
+                 </svg>
+                 <svg id="Difficulty2" height="100%"    width="100%" viewBox="0 0 50 50">
+                     <circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2"/>
+                 </svg>
+                 <svg id="Difficulty3" height="100%"    width="100%" viewBox="0 0 50 50">
+                     <circle cx="50%" cy="50%" r="40%" fill="orange " stroke ="black" stroke-width="0" id = "3"/>
+                 </svg>
+                 <svg id="Difficulty4" height="100%"    width="100%" viewBox="0 0 50 50">
+                     <circle cx="50%" cy="50%" r="40%" fill="red "stroke ="black" stroke-width="0" id = "4"/>
+                 </svg>
+             </div>
+
+            <div id = "timeBox" >
+                <img id = "timeClock" src="svg/clock.svg" >
+                <div id = "timeFilter-select">
+                    <div class="timeFilter-select">
+                      <select>
+                        <option value="0">&ge;</option>
+                        <option value="1">&le;</option>
+                        <option value="2">=</option>
+                      </select>
+                    </div>
+                </div>
+                <input id = "hour" type="number">
+                <div id = "textColonTime">:</div>
+                <input id = "min" type="number">
+
+            </div>
+
+        -->
+        </div>
+
+        <div class="profile_page">
+            <div id="background_border" style="top:5vw">
+                    <img id="defaultprofile" src="postImage/dio_chief.jpg">
+                <div id="username">DionlyChief</div>
+                <img id="editButton" src="svg/edit-button.svg" >
+                <div class="counts">
+                    <div id="posts">Posts</div>
+                    <div id="postcount">6</div>
+                    <div id="followers">Followers</div>
+                    <div id="followercount">256</div>
+                    <div id="following">Following</div>
+                    <div id="followingcount">3</div>
+                </div>
+                <button id="ToPostPage">Post</button>
+                <div class="pages">
+                    <a href="profile.html" id="myrecipes" onclick="ProfileClick()">My Recipes</a>
+                    
+                    <a href="profile_favorites.html" id="favorites" onclick="ProfileClick()">Favorites</a>
+                    
+                </div>
+
+            </div>
+            <div class="favimages">
+                    <div id="grid" style="bottom:5vw">
+                        <img id="Fav1" src="postImage/Fav1.jpg">
+                        <img id="Fav2" src="postImage/Fav2.jpg">
+                        <img id="Fav3" src="postImage/Fav3.jpg">
+                    </div>
+                </div>
+
+        </div>
+
+
+       <script src="js/profile.js"></script>
+        <script src="js/filter.js"></script>
+        <script src="js/timeFilter.js"></script>
+
+    </body>
+</html>
