@@ -28,60 +28,42 @@
     
     <!--############## Post Entry #################-->
     <div class="recipePost" id="recipePost">
-        <div style="top:5vw"id="post" ></div>
-        <div style="top:50vw"id="post" ></div>
-            <!--users recipe image-->
-            <img id="postImage" src="svg/emptyImage.svg">   
-
-            <!--recipe title-->                                               
-            <div id="foodTitle">
-            <form action="/action_page.php">
-                Title: <input type="text" name="title"><br>
-              </form>
+			<div id = "col1">
+				<img id = "postImage" src="svg/emptyImage.svg">
+				<span id = "imgImportTxt">Import Image</span>
+				<input id = "imgImport" type = "file" accept = "image/*">
+				<p>Description</p>
+				<input id = "desc" type= "text" placeholder ="Tell us about your recipe!">
+				<p>Instructions</p>
+				<input id = "Instruc" placeholder ="Give step by step directions on how you made your recipe!">
             </div>
+			<div id = "col2">
+				<div style ="block">
+                    <span id="titleTxt">Title</span>
+				    <input id = "title" placeholder = "Name of your recipe">
+				</div>
+				<span id = "tagTxt">Tags </span>
+				<input id = "tags" placeholder = "Tag your recipe with keywords">
+				<button id = "appendTag" onclick = 'appendTag()'>+</button>
+             </div>
+				<div>
+					<div style ="display:inline-block">
+						<span id = "IngredTitle">Ingredients</span>
+						<input id = "Ingred">
+						<br>
+						<span id = "AmtTitle">Amount</span>
+						<input id = "Amount">
+					</div>
+					<div style ="display:inline-block">
+						<button id ="appendIngred" onclick = 'appendIngred()'>+</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
 
-
-            <!--Difficulty-->
-            <div id="difficulty">Select Difficulty:                                         
-                <svg id="foodDifficulty">                                                                       
-                    <circle cx="50%" cy="50%" r="30%" fill="Chartreuse"></circle>                                 
-                </svg>              
-
-
-            <!--time for how long recipe takes-->
-            <img id="clock" src="svg/clock.svg">  
-            <!--Time for the recipe-->
-            <div id="time">
-                <form action="/action_page.php">
-                    <input type="number" name="">h 
-                    <input type="number" name="">m<br>
-                  </form>
-            </div>
-
-            <!--Description form-->
-            <div id="description">
-                <form action="/action_page.php">
-                    Description:<input type="text" name=""><br>
-                  </form>
-            </div>
-
-            <!--Recipe instructions-->
-            <div id="recipe_steps">
-                <form action="/action_page.php">
-                    <h1>Instructions:</h1>
-                    <input type="text" name=""><br>
-                </form>
-            </div>
-
-            <div id="ingredients">
-                <form action="/action_page.php">
-                    <h1>Ingredients:</h1>
-                    Item:<input type="text" name=""><br>
-                    Amount:<input type="text" name=""><br>
-                </form>
-            </div>
-    </div>
-          
+        
+        <button id="buttonPost">Post</button>
 
     <!--############## End of Post #################-->
     
