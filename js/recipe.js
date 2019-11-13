@@ -65,13 +65,89 @@ var html = '        <div id="post"  style = "top:'+ (5) + 'vw">                 
         html += data.ingredients[i][1] + "<br>"; //don't forget to add the base
     }
                             
-    html +='</div></div>';
+    html +='</div> </div>    </div>';
                             
     document.getElementById("recipe").innerHTML += html;
-                                                        
+                            
+    html = "";
+    
+    for( var i = 0; i < data.comment.length; i++ ){
+        html += '<div id="reviewPost" style = "top:'+ (i*25 + 5) + '%">'
+        html += '<div id="reviewTextName" >&nbsp;' +data.comment[i][1] + ": </div>";
+        html += '<div id="reviewText" >&nbsp;' +data.comment[i][2] + " </div>" + "</div>";
+       
+    }
+    html += '<div id="reviewPost" style = "top:'+ ((data.comment.length)*25 + 5) + '%">'
+                            html += '<button id="buttonPostReview">Post</button>'
+    html += '<div id="reviewTextName" >&nbsp;' +  "your user name" + ": </div>";
+                            
+
+    html += '<input id="createReviewText" type="text" placeholder="write your review here!">'+ "</div>";
+    
+    document.getElementById("review").innerHTML += html;
+
+            
 })
 
 }
 
 JSONtoRecipeDisplay(5)
 
+
+document.getElementById("starPick1").onclick = function (e) {
+    document.getElementById('starPick1').src = "svg/starGreen.svg";
+    document.getElementById('starPick2').src = "svg/star.svg";
+    document.getElementById('starPick3').src = "svg/star.svg";
+    document.getElementById('starPick4').src = "svg/star.svg";
+    document.getElementById('starPick5').src = "svg/star.svg";
+
+};
+document.getElementById("starPick2").onclick = function (e) {
+    document.getElementById('starPick1').src = "svg/starGreen.svg";
+    document.getElementById('starPick2').src = "svg/starGreen.svg";
+    document.getElementById('starPick3').src = "svg/star.svg";
+    document.getElementById('starPick4').src = "svg/star.svg";
+    document.getElementById('starPick5').src = "svg/star.svg";
+
+};
+document.getElementById("starPick3").onclick = function (e) {
+    document.getElementById('starPick1').src = "svg/starGreen.svg";
+    document.getElementById('starPick2').src = "svg/starGreen.svg";
+    document.getElementById('starPick3').src = "svg/starGreen.svg";
+    document.getElementById('starPick4').src = "svg/star.svg";
+    document.getElementById('starPick5').src = "svg/star.svg";
+
+};
+document.getElementById("starPick4").onclick = function (e) {
+    document.getElementById('starPick1').src = "svg/starGreen.svg";
+    document.getElementById('starPick2').src = "svg/starGreen.svg";
+    document.getElementById('starPick3').src = "svg/starGreen.svg";
+    document.getElementById('starPick4').src = "svg/starGreen.svg";
+    document.getElementById('starPick5').src = "svg/star.svg";
+
+};
+document.getElementById("starPick5").onclick = function (e) {
+    document.getElementById('starPick1').src = "svg/starGreen.svg";
+    document.getElementById('starPick2').src = "svg/starGreen.svg";
+    document.getElementById('starPick3').src = "svg/starGreen.svg";
+    document.getElementById('starPick4').src = "svg/starGreen.svg";
+    document.getElementById('starPick5').src = "svg/starGreen.svg";
+
+};
+
+
+function moveReviewClick(){
+    if (document.getElementById("reviewUpDown").style.bottom == "50%"){
+        document.getElementById("reviewUpDown").style.bottom = "0%";
+        document.getElementById("reviewUpDown").innerHTML = "&#x2912;";
+        
+        document.getElementById("userInput").style.bottom = "-50%";
+
+    } else {
+        document.getElementById("reviewUpDown").style.bottom = "50%";
+        document.getElementById("reviewUpDown").innerHTML = "&#x2913;";
+        
+        document.getElementById("userInput").style.bottom = "0%";
+
+    }
+}
