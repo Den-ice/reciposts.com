@@ -19,49 +19,104 @@
 
 #background_border {
     background-color: rgb(255, 255, 255);
-    width: 90%;
-    height: 90%;
+    width: 90vw;
+    height: 31vw;
     position: absolute;
     left: 5%;
      
 }
 
 #defaultprofile {
-    height: 15vw;
-    width: 15vw;
+    height: 20vw;
+    width: 20vw;
     position: absolute;
-    left: 5%;
-    right: 80%;
-    top: 10%;
-    bottom: 58%;
+    left: 3vw;
+    /* right: 79vw; */
+    top: 3vw;
+    /* bottom: 58%;*/
     object-fit: contain;
 
 }
+/*style of user name*/
 #username {
-    width: 13vw;
+    width: 16vw;
     height: 4vw;
     position: absolute;
-    left: 25vw;
-    top: 9vw;
+    left: 24vw;
+    top: 11vw;
     font-size: 3vw;
     color: grey;
 }
 
+/*the style of the profile edit button*/
 #editButton {
-    width: 4vw;
-    height: 5vw;
+    width: 8vw;
+    height: 6vw;
     object-fit: contain;
     position: absolute;
-    left: 56%;
-    top: 14%;
+    right: 30vw;
+    top: 8.5vw;
 }
 
+/*the style link button to the post page*/
+
+#ToPostPage {
+    height: 7vw;
+    position: absolute;
+    width: 12vw;
+    /* bottom: 26vw; */
+    top: 8vw;
+    right: 15vw;
+    background-color: rgb(146, 226, 200);
+    padding: 2vh 2vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3vw;
+    font-style: normal;
+    cursor: pointer;
+    color: #f3fffe;
+    border: lightseagreen;
+    border-radius: 3vw;
+}
+/*the posts, followers, following styles*/
+.counts{
+    background-color:rgba(245, 245, 245, 0);
+    width: 90vw;
+    height: 10vw;
+    position: absolute;
+    top: 15vw;
+    /*left: 0px;
+    margin-top: auto;
+    margin-bottom: 0px;
+    overflow-y: scroll;
+    z-index: -1;*/
+}
 #postcount {
+    width: 7vw;
+    height: 4vw;
+    position: absolute;
+    left: 26vw;
+    top: 2vw;
+    font-size: 2.5vw;
+    color: grey;
+}
+
+#posts {
     width: 13vw;
     height: 4vw;
     position: absolute;
-    left: 23vw;
-    top: 17vw;
+    left: 24vw;
+    top: 5vw;
+    font-size: 2.5vw;
+    color: grey;
+}
+#followercount {
+    width: 7vw;
+    height: 4vw;
+    position: absolute;
+    left: 37vw;
+    top: 2vw;
     font-size: 2.5vw;
     color: grey;
 }
@@ -71,7 +126,17 @@
     height: 4vw;
     position: absolute;
     left: 34vw;
-    top: 17vw;
+    top: 5vw;
+    font-size: 2.5vw;
+    color: grey;
+}
+
+#followingcount {
+    width: 7vw;
+    height: 4vw;
+    position: absolute;
+    left: 53vw;
+    top: 2vw;
     font-size: 2.5vw;
     color: grey;
 }
@@ -81,26 +146,113 @@
     height: 4vw;
     position: absolute;
     left: 49vw;
-    top: 17vw;
+    top: 5vw;
     font-size: 2.5vw;
     color: grey;
 }
-
-#ToPostPage {
-    height: 7vw;
+/*pages class and everything in it*/
+.pages {
+    background-color:rgba(245, 245, 245, 0);
+    width: 90vw;
+    height: 10vw;
     position: absolute;
-    width: 12vw;
-    /* bottom: 26vw; */
-    top: 8vw;
-    right: 19vw;
-    background-color: rgb(146, 226, 200);
-    padding: 2vh 4vh;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 4vh;
-    cursor: pointer;
-    color: #f3fffe;
-    border: lightseagreen;
-    border-radius: 3px;
+    top: 20vw; 
+}
+
+#myrecipes {
+    position: absolute;
+    left: 29vw;
+    top: 6vw;
+    font-size: 2.5vw;
+    color: grey;
+    text-decoration:none;
+
+}
+
+#favorites {
+    position: absolute;
+    right: 29vw;
+    top: 6vw;
+    font-size: 2.5vw;
+    color: grey;
+    text-decoration:none;
+
+}
+/*Images styles layout*/
+
+.myimages{
+    background-color: rgb(245, 245, 245);
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    margin-top: 36vw;
+    margin-bottom: auto;
+    overflow-y: scroll;
+    z-index: -1;
+}
+
+#gridlayout {
+    height: 100%;
+    width: 91.6%;
+    position: absolute;
+    bottom: 0px;
+    top: 0vw;
+    left: 5vw;
+}
+
+#MyR1{
+    height: 24vw;
+    width: 28vw;
+    position: absolute;
+    bottom: 0px;
+    top: 0vw;
+    left: 0vw;
+}
+
+#MyR2{
+    height: 24vw;
+    width: 28vw;
+    position: absolute;
+    bottom: 0px;
+    top: 0vw;
+    left: 31vw;
+}
+
+#MyR3{
+    height: 24vw;
+    width: 28vw;
+    position: absolute;
+    bottom: 0px;
+    top: 0vw;
+    right: 0vw;
+}
+
+#MyR4{
+    height: 24vw;
+    width: 28vw;
+    position: absolute;
+    bottom: 0px;
+    top: 26vw;
+    left: 0vw;
+}
+
+#MyR5{
+    height: 24vw;
+    width: 28vw;
+    position: absolute;
+    bottom: 0px;
+    top: 26vw;
+    left: 31vw;
+}
+
+#MyR6{
+    height: 24vw;
+    width: 28vw;
+    position: absolute;
+    bottom: 0px;
+    top: 26vw;
+    right: 0vw;
 }
