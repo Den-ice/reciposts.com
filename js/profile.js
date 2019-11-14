@@ -1,3 +1,5 @@
-document.getElementById("moveFilter").innerHTML = "<<";
-document.getElementById("searchText").value = "Search Recipes";
 
+function postClick(){
+    window.location.href = "./post.html";
+    
+}

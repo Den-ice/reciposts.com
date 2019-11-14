@@ -22,7 +22,7 @@ switch(data.difficulty) {
           foodDiff = "red";
 }
           
-var html = '        <div id="post"  style = "top:'+ (5 + postCount*50) + 'vw">                                      \
+var html = '        <div id="post"  style = "top:'+ (5 + postCount*50) + 'vw"   onclick="goToRecipe('+id+')">                                      \
     <img id = "postImage" src="postImage/'+data.imageID+'.jpg" >                            \
     <img id = "userImage" src="svg/defualt.svg" onclick="profileClick()">                   \
     <div id="userName">'+data.userName+'</div>                                              \
@@ -57,7 +57,12 @@ var html = '        <div id="post"  style = "top:'+ (5 + postCount*50) + 'vw">  
 
 }
 
-JSONtoPostList(1)
+JSONtoPostList(5)
 JSONtoPostList(2)
 JSONtoPostList(3)
 JSONtoPostList(4)
+
+
+function goToRecipe(id){
+          window.location.href = "./recipe.html?id="+id+"&";
+}

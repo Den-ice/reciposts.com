@@ -76,7 +76,7 @@
             <div id="background_border" style="top:5vw">
                     <img id="defaultprofile" src="postImage/dio_chief.jpg">
                 <div id="username">DionlyChief</div>
-                <img id="editButton" src="svg/edit-button.svg" >
+                <!-- <img id="editButton" src="svg/edit-button.svg" >-->
                 <div class="counts">
                     <div id="posts">Posts</div>
                     <div id="postcount">6</div>
@@ -85,7 +85,7 @@
                     <div id="following">Following</div>
                     <div id="followingcount">3</div>
                 </div>
-                <button id="ToPostPage">Post</button>
+                <button id="ToPostPage"  onclick="postClick()">Post</button>
                 <div class="pages">
                     <a href="profile.html" id="myrecipes" onclick="ProfileClick()">My Recipes</a>
                     
@@ -108,6 +108,7 @@
        <script src="js/profile.js"></script>
         <script src="js/filter.js"></script>
         <script src="js/timeFilter.js"></script>
+        <input id = "goBack" type="button" value="&#x2190;" onclick="history.back()">
 
     </body>
 </html>

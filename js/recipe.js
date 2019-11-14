@@ -1,4 +1,6 @@
-
+function profileClick() {
+    window.location.href = "./profile.html";
+}
 function JSONtoRecipeDisplay(id) {
     
 $.getJSON('JSON/'+id+'.json',function(data){
@@ -91,8 +93,6 @@ var html = '        <div id="post"  style = "top:'+ (5) + 'vw">                 
 
 }
 
-JSONtoRecipeDisplay(5)
-
 
 document.getElementById("starPick1").onclick = function (e) {
     document.getElementById('starPick1').src = "svg/starGreen.svg";
@@ -150,4 +150,15 @@ function moveReviewClick(){
         document.getElementById("userInput").style.bottom = "0%";
 
     }
+}
+
+var number = getUrlVars()["id"];
+JSONtoRecipeDisplay(number)
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+  });
+  return vars;
 }

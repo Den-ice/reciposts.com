@@ -12,6 +12,7 @@ document.getElementById("searchText").value = "Search Recipes";
         document.getElementById("min").value = "00";
 
      function profileClick() {
+         window.location.href = "./profile.html";
      }
      function notificationClick() {
      }

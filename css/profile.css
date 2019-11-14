@@ -190,7 +190,6 @@
     left: 0px;
     margin-top: 36vw;
     margin-bottom: auto;
-    overflow-y: scroll;
     z-index: -1;
 }
 
@@ -255,4 +254,17 @@
     bottom: 0px;
     top: 26vw;
     right: 0vw;
+}
+#goBack {
+    position: absolute;
+    bottom:0%;
+    left: 0%;
+
+     font-size: 5vh;
+     cursor: pointer;
+     
+     color: rgb(146, 226, 200);
+     border: 0px solid rgb(0, 0, 0);
+     background-color:  rgba(146, 226, 200,0);
+     z-index:20;
 }
