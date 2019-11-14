@@ -1,32 +1,37 @@
 
 <!DOCTYPE html>
-<html><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
-    <link rel="stylesheet" type="text/css" href="css/post.css">
-        
-    <script src="js/jquery-3.3.1.js"></script>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
+        <link rel="stylesheet" type="text/css" href="css/post.css">
+        <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
+        <link rel="stylesheet" type="text/css" href="css/filter.css">
+        <link rel="stylesheet" type="text/css" href="css/timeFilter.css">
 
-    <!--############## NAVIGATION BAR #################-->
-    <div class="top_Navigation">
-        <div id="tittle">Reciposts</div>
+            
+        <script src="js/jquery-3.3.1.js"></script>
+
         
-        <div id="searchBar">
-            <img id="searchImg" src="svg/search.svg" onclick="searchClick()">
-            <input id="searchText" type="text">
+        
+    </head>
+    <body>
+        
+        <div class="top_Navigation">
+            <div id = "tittle">Reciposts</div>
+            
+            <div id = "searchBar" >
+                <img id = "searchImg" src="svg/search.svg" onclick='searchClick()'>
+                <input id = "searchText" type="text">
+            </div>
+                
+            <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
+                
+            <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
         </div>
-            
-        <img id="profileButton" src="svg/man-user.svg" onclick="profileClick()">
-            
-        <img id="notificationButton" src="svg/notification.svg" onclick="notificationClick()">
-    </div>
-    
-</head>
-<body>
-    
-    <!--############## Post Entry #################-->
+        
+ 
+		<!--############## Post Entry #################-->
         <div class = "post" >
 			<form>
 				<div id = "col1">
@@ -82,16 +87,16 @@
 						<label for = "DifficultyScale1" >Difficulty:</label>
 			
 						<div id="DifficultyScale1">
-							<svg id="Difficulty1"  height="100%"    width="100%" viewBox="0 0 50 50">
+							<svg id="Difficulty1"  height="100%"    width="25%" viewBox="0 0 50 50">
 								<circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="3" id = "1"/>
 							</svg>
-							<svg id="Difficulty2" height="100%"    width="100%" viewBox="0 0 50 50">
+							<svg id="Difficulty2" height="100%"    width="25%" viewBox="0 0 50 50">
 								<circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2"/>
 							</svg>
-							<svg id="Difficulty3" height="100%"    width="100%" viewBox="0 0 50 50">
+							<svg id="Difficulty3" height="100%"    width="25%" viewBox="0 0 50 50">
 								<circle cx="50%" cy="50%" r="40%" fill="orange " stroke ="black" stroke-width="0" id = "3"/>
 							</svg>
-							<svg id="Difficulty4" height="100%"    width="100%" viewBox="0 0 50 50">
+							<svg id="Difficulty4" height="100%"    width="25%" viewBox="0 0 50 50">
 								<circle cx="50%" cy="50%" r="40%" fill="red " stroke ="black" stroke-width="0" id = "4"/>
 							</svg>
 						</div>
@@ -115,15 +120,10 @@
 				<button id="buttonPost">Post</button>
 			</form>
         </div>
+		
+       <script src="js/post.js"></script>
+        <script src="js/filter.js"></script>
+        <script src="js/timeFilter.js"></script>
 
-    <!--############## End of Post #################-->
-    
-                
-    <script src="js/nav.js"></script>
-    <script src="js/filter.js"></script>
-    <script src="js/timeFilter.js"></script>
-    
-
-
-
-</body></html>
+    </body>
+</html>
