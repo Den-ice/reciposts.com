@@ -1,118 +1,159 @@
+
 body {
-    background-color:  rgb(240, 240, 240);
+    background-color:  rgb(245, 245, 245);
     overflow: hidden;
 }
-.recipePost {
+
+#buttonPost {
+    position: fixed;
+    bottom:2%;
+    right: 25%;
     background-color:  rgb(245, 245, 245);
-    width: 100%;
-    height: 100%;
+     padding: 2vh 4vh;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 4vh;
+     cursor: pointer;
+     
+     color: grey;
+     border: 1px solid grey;
+     border-radius: 3px;
+
+}
+
+.post{
+    background-color:  rgb(255, 255, 255);
+	max-width:800px;
+	min-width:600px;
+    width: 50%;
+    height: 75%;
 
     position: absolute;
     bottom: 0px;
-    top: 15%;
+    top: 0px;
     left: 0px;
+    right: 0px;
 
     margin-top: auto;
     margin-bottom: auto;
+    
+    margin-right: auto;
+    margin-left: auto;
+    
     overflow-y: scroll;
     z-index: -1;
 }
 
-#post {
-    background-color:  rgb(255, 255, 255);
-     width: 90%;
-     height: 100%;
-     position: absolute;
-     left: 5%;
-     
+/*more needs to be added to handle dif browsers*/
+.post::-webkit-scrollbar {
+ display: none;
 }
+.columnContainer {
+	margin: 1.5vh 0vh;
+}
+#col1 {
+	float:left;
+	position:relative;
+	width: 40%;
+
+	display: inline-block;
+	
+	margin: 1%;
+}
+
+#col2 {
+	float:left;
+	position:absolute;
+	width: 50%;
+
+	display: inline-block;
+	
+	margin: 5% 1%;
+}
+label {
+	top:40%;
+	position:relative;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+
+#DifficultyContainer {
+	position:relative;
+	height: 50px;
+}
+
+#DifficultyScale1 {
+	position:absolute;
+	display:inline-block;
+	top:40%;
+	width: 40%;
+	height: 50%;
+	font-size:4vh;
+	color:grey;
+	text-decoration:none
+}
+
+textarea {
+	width:100%;
+	height: 10%;
+}
+
+
+#ingredContainer {
+	display:inline-block;	
+}
+
+#ingredAmtContainer {
+	position:relative;
+	height: 15%;
+	display:block;
+}
+
+#appendIngredContainer {
+	height:100%;
+	position:absolute;
+	display:inline-block;
+}
+
+#appendIngred {
+	height:100%;
+}
+
+#Ingred {
+	float: right;
+	display:inline-block;
+	position:relative;
+}
+
+#Amount {
+	float:right;
+	display:inline-block;
+}
+
+#cookTimeContainer {
+	height: 15%;
+}
+
+#hour1, #min1 {
+	width:10%;
+}
+
+#
+input {
+	color:lightgray;
+/*	border-color:#e6e6e6; */
+}
+
+#timeImg {
+	width: 2vw;
+}
+
 #postImage {
-     height: 40%;
-     width: 40%;
-     left: 25px;
-     position: absolute;
-     object-fit: contain;
+	display:block;
+    position: relative;
 
-}
-
-#foodTitle {
-     width: 50%;
-     height: 20%;
-     
-     position: absolute;
-     left: 47%;
-     top: 10%;
-     font-size: 4vw;
-     color: darkgray;
-
-}
-
-#foodDifficulty {
-     width: 10%;
-     height: 10vw;
-     
-     position: absolute;
-     left: 45%;
-     top: 28%;
-
-}
-
-#clock {
-     width: 7%;
-     height: 10vw;
-     
-     position: absolute;
-     left: 47%;
-     top: 16%;
-     object-fit: contain;
-
-}
-
-#time {
-     width: 30%;
-     height: 20%;
-     
-     position: absolute;
-     left: 55%;
-     top: 18%;
-     font-size: 3vw;
-}
-
-#description {
-     width: 60%;
-     height: 45%;
-     
-     position: absolute;
-     left: 45%;
-     top: 42%;
-     font-size: 3vw;
-     color: darkgray;
-}
-#recipe_steps {
-    width: 60%;
-    height: 45%;
-    
-    position: absolute;
-    left: 50%;
-    top: 45%;
-    font-size: 3vw;
-    color: darkgray;
-}
-#ingredients {
-    width: 60%;
-    height: 45%;
-    
-    position: absolute;
-    left: 10%;
-    top: 45%;
-    font-size: 3vw;
-    color: darkgray;
-}
-#spacer {
-     width: 60%;
-     height: 10vw;
-     
-     position: absolute;
-     left: 5%;
+  
+   width: 100%;
 
 }
