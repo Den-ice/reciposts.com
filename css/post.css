@@ -136,13 +136,16 @@ textarea {
 }
 
 #hour1, #min1 {
-	width:10%;
+	width:20%;
 }
 
 #
 input {
 	color:lightgray;
 /*	border-color:#e6e6e6; */
+}
+#remTag {
+	display:none;
 }
 
 #timeImg {
