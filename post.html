@@ -27,54 +27,94 @@
 <body>
     
     <!--############## Post Entry #################-->
-    <div class="recipePost" id="recipePost">
-	<div id = "col1">
-		
-		<!--Image Field-->
-		<img id = "postImage" src="svg/emptyImage.svg">
-		<span id = "imgImportTxt">Import Image</span>
-		<input id = "imgImport" type = "file" accept = "image/*">
-		
-		<!--Description Field-->
-		<p>Description</p>
-		<input id = "desc" type= "text" placeholder ="Tell us about your recipe!">
-		
-		<!--Instruction Field-->
-		<p>Instructions</p>
-		<input id = "Instruc" placeholder ="Give step by step directions on how you made your recipe!">
-		
-	</div>
-	<div id = "col2">
-	
-		<!--Title Field-->
-		<div style ="block">
-			<span id="titleTxt">Title</span>
-			<input id = "title" placeholder = "Name of your recipe">
-		</div>
-		
-		<!--Tag Field-->
-		<span id = "tagTxt">Tags </span>
-		<input id = "tags" placeholder = "Tag your recipe with keywords">
-		<button id = "appendTag" onclick = 'appendTag()'>+</button>
-		
-    	</div>
-	<div>
-		<div style ="display:inline-block">
-			<span id = "IngredTitle">Ingredients</span>
-			<input id = "Ingred">
-			<br>
-			<span id = "AmtTitle">Amount</span>
-			<input id = "Amount">
-		</div>
-		<div style ="display:inline-block">
-			<button id ="appendIngred" onclick = 'appendIngred()'>+</button>
-		</div>
-	</div>
+        <div class = "post" >
+			<form>
+				<div id = "col1">
+			
+			<!--Image Upload-->
+				<img id = "postImage" src="svg/emptyImage.svg">
+					<div class="columnContainer">
+						<label for = "imgImport">Import Image</label>
+						<input id = "imgImport" type = "file" accept = "image/*" required >
+					</div>
+			
+			<!--Description Input-->
+					<div class="columnContainer">
+						<label for = "desc">Description</label>
+						<textarea id = "desc" placeholder ="Tell us about your recipe!" required></textarea>
+					</div>
+			
+			<!--Instruction Input-->
+					<div class="columnContainer">
+						<label for="Instruc">Instructions</label>
+						<textarea id = "Instruc" placeholder ="Give step by step directions on how you made your recipe!" required></textarea>
+					</div>
+				</div>
+			
+				<div id = "col2">
+			
+			<!--Title Input-->
+					<div class="columnContainer">
+						<label for="recititle">Title</label>
+						<input id = "recititle" placeholder = "Name of your recipe" required>
+					</div>
 				
-	</div>
-
-        
-        <button id="buttonPost">Post</button>
+			<!--Tag Input-->
+					<div class="columnContainer" style ="display:block;">
+						<label for = "tags">Tags</label>
+						<input id = "tags" placeholder = "Tag your recipe with keywords">
+						<button id = "appendTag" onclick = 'appendTag()'>+</button>
+					</div>
+				
+			<!--Cook Time Input-->
+					<div id = "cookTimeContainer" class="columnContainer">
+						<label for="cookTime">Cook Time</label>
+						<div id="cookTime">
+							<img id="timeImg" src="svg/clock.svg">
+							<input id = "hour1" type="number" placeholder="HH" min="0" max="12" required>
+							<span> : </span>
+							<input id ="min1" type="number" placeholder="mm" min="0" max="59" required>
+						</div>
+					</div>
+			
+			<!--Difficulty Selection-->
+					<div id = "DifficultyContainer" class="columnContainer">
+						<label for = "DifficultyScale1" >Difficulty:</label>
+			
+						<div id="DifficultyScale1">
+							<svg id="Difficulty1"  height="100%"    width="100%" viewBox="0 0 50 50">
+								<circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="3" id = "1"/>
+							</svg>
+							<svg id="Difficulty2" height="100%"    width="100%" viewBox="0 0 50 50">
+								<circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2"/>
+							</svg>
+							<svg id="Difficulty3" height="100%"    width="100%" viewBox="0 0 50 50">
+								<circle cx="50%" cy="50%" r="40%" fill="orange " stroke ="black" stroke-width="0" id = "3"/>
+							</svg>
+							<svg id="Difficulty4" height="100%"    width="100%" viewBox="0 0 50 50">
+								<circle cx="50%" cy="50%" r="40%" fill="red " stroke ="black" stroke-width="0" id = "4"/>
+							</svg>
+						</div>
+					</div>
+			
+					<div id = "ingredAmtContainer" class="columnContainer">
+						<div id="ingredContainer">
+							<label for= "Ingred">Ingredients</label>
+							<input id = "Ingred">
+							<br>
+							<label for = "Amount" style="position:absolute;">Amount</label>
+							<input id = "Amount">
+						</div>
+						<div id="appendIngredContainer">
+							<button id ="appendIngred" onclick = 'appendIngred()'>+</button>
+						</div>
+					</div>
+				</div>
+				
+				<!--Submit Button-->
+				<button id="buttonPost">Post</button>
+			</form>
+        </div>
 
     <!--############## End of Post #################-->
     
