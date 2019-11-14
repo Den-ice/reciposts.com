@@ -6,6 +6,9 @@
     "description": "when you want to gobble a sandwich down for lunch",
     "rating": [0,3,4,5,5,3],
     "difficulty": 1
+    "ingredients": [ ["Croissant",""], ["Leftover Sliced Turkey",""], ["BOU Turkey flavored Gravy Cube",""], ["Leftover Cranberry Sauce","1/2 tsp"], ["Leftover Stuffing",""], ["Fresh Organic Baby Spinach",""] ],
+    "instructions": "Gravy\n\n Simply add 1 BOU Gravy Cube to 1⁄2 cup of boiling water in pan 2. Whisk over high heat for about 2 minutes\n\nSandwich\n\nSlice the croissant lengthwise, almost all the way through 2. Layer the turkey, BOU gravy, cranberry sauce, stuffing, and a few spinach leaves.\n\nIf desired, wrap the sandwich in foil and warm in the oven for 5-7 minutes at 300 degrees. \n",
+    "comment": [["pjardin@me.com", "pj", "thanks for the left over"],["pascalhackrobot@gmail.com", "hackPJ", "sweet"]]
 }
 
 
