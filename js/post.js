@@ -1,11 +1,12 @@
 document.getElementById("searchText").value = "Search Recipes";
 
-function appendFunc() {
-var origTag = document.getElementById("tagContainer");
-var clnTag = origTag.cloneNode(true);
+var count = 0;
 
-var col = document.getElementById("col2");
-  col.insertBefore(clnTag, col.childNodes[10]);
+function appendFunc() {
+var origTag = document.getElementById("tagContainer" + count);
+var clnTag = origTag.cloneNode(true);
+clnTag.id = "tagContainer" + ++count;
+  origTag.insertAfter(clnTag, origTag);
  
 }
 
