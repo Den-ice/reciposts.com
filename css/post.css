@@ -41,7 +41,8 @@ body {
     margin-right: auto;
     margin-left: auto;
     
-    overflow-y: scroll;
+    overflow-y: auto;
+	scrollbar: hidden;
     z-index: -1;
 }
 
@@ -51,6 +52,7 @@ body {
 }
 .columnContainer {
 	margin: 1.5vh 0vh;
+	overflow:hidden;
 }
 #col1 {
 	float:left;
@@ -95,28 +97,49 @@ label {
 }
 
 textarea {
-	width:100%;
+	width:95%;
 	height: 10%;
 }
 
 
 #ingredContainer {
 	display:inline-block;	
+	width:87%;
+	height:100%;
 }
 
-#ingredAmtContainer {
+#Container0 {
+	display:inline-block;
+	width:100%;
+}
+
+#Container1 {
+	display:inline-block;
+	width:100%;
+}
+
+#ingredAmtContainer0 {
 	position:relative;
 	height: 15%;
+	width:100%;
 	display:block;
+	overflow:hidden;
 }
 
 #appendIngredContainer {
 	height:100%;
-	position:absolute;
+	position:relative;
 	display:inline-block;
+	width:10%;
 }
 
-#appendIngred {
+#ingredAmtRepeat {
+	position:absolute;
+	disply: block;
+	width:100%;
+}
+
+#appendIngredbutton {
 	height:100%;
 }
 
