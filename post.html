@@ -33,14 +33,14 @@
  
 		<!--############## Post Entry #################-->
         <div class = "post" >
-			<form>
+			<form autocomplete="off" action="Post">
 				<div id = "col1">
 			
 			<!--Image Upload-->
 				<img id = "postImage" src="svg/emptyImage.svg">
 					<div class="columnContainer">
 						<label for = "imgImport">Import Image</label>
-						<input id = "imgImport" type = "file" accept = "image/*" required >
+						<input id = "imgImport" type = "file" accept = "image/*" onchange="encodeImageFileAsURL(this)" required >
 					</div>
 			
 			<!--Description Input-->
@@ -59,18 +59,19 @@
 				<div id = "col2">
 			
 			<!--Title Input-->
-					<div class="columnContainer">
+					<div id="titleContainer" class="columnContainer">
 						<label for="recititle">Title</label>
 						<input id = "recititle" placeholder = "Name of your recipe" required>
 					</div>
 				
 			<!--Tag Input-->
-					<div class="columnContainer" style ="display:block;">
-						<label for = "tags">Tags</label>
-						<input id = "tags" placeholder = "Tag your recipe with keywords">
-						<button id = "appendTag" onclick = 'appendTag()'>+</button>
+					<div id="tagRepeat">
+						<div id="tagContainer0" class="columnContainer" style ="display:block;">
+							<label for = "tags">Tags</label>
+							<input id = "tags" placeholder = "Tag your recipe with keywords">
+							<button id = "appendTag" onclick = 'appendFunc(this)'>+</button>
+						</div>
 					</div>
-				
 			<!--Cook Time Input-->
 					<div id = "cookTimeContainer" class="columnContainer">
 						<label for="cookTime">Cook Time</label>
@@ -101,17 +102,21 @@
 							</svg>
 						</div>
 					</div>
-			
-					<div id = "ingredAmtContainer" class="columnContainer">
-						<div id="ingredContainer">
-							<label for= "Ingred">Ingredients</label>
-							<input id = "Ingred">
-							<br>
-							<label for = "Amount" style="position:absolute;">Amount</label>
-							<input id = "Amount">
-						</div>
-						<div id="appendIngredContainer">
-							<button id ="appendIngred" onclick = 'appendIngred()'>+</button>
+					<div id="ingredAmtRepeat">
+						<div id = "ingredAmtContainer0" class="columnContainer">
+							<div id="ingredContainer">
+								<div id="Container0">
+									<label for= "Ingred">Ingredients</label>
+									<input id = "Ingred">
+								</div>
+								<div id="Container1">
+									<label for = "Amount">Amount</label>
+									<input id = "Amount" type= "number">
+								</div>
+							</div>
+							<div id="appendIngredContainer">
+								<button id ="appendIngredbutton" onclick = 'appendFunc(this)'>+</button>
+							</div>
 						</div>
 					</div>
 				</div>
