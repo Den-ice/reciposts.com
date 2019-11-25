@@ -4,6 +4,7 @@
     "hours" : "0",
     "min" : "45",
     "description": "Easy Quick recipe for a filling lunch!",
+    "tags": ["lunch"],
     "rating": [5,5,4,5,5,5],
     "difficulty": 2,
     "ingredients": [ ["Raw Cod","4 oz"], ["Seasoning Salt","2 tsp"], ["Pepper","1 tsp"], ["Garlic Powder","1/2 tsp"], ["Flour","1/2 cup"], ["Egg","1-2"], ["Potato","1"], ["Vegetable Oil","2 cup"] ],

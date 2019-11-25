@@ -124,6 +124,11 @@ function signInButton() {
       onSuccess: function (result) {
           var accessToken = result.getAccessToken().getJwtToken();
           console.log(accessToken);
+
+                console.log(result);
+            var idToken = result.getIdToken().getJwtToken();
+                               console.log(idToken);
+
            document.getElementById("signInInfo").innerHTML = "signed in"
            document.getElementById("signInInfo").style.color = "green";
                                

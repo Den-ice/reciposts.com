@@ -3,7 +3,8 @@ function profileClick() {
 }
 function JSONtoRecipeDisplay(id) {
     
-$.getJSON('JSON/'+id+'.json',function(data){
+//add logic to chnage recipost id
+$.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_a8408cf0-0fa3-11ea-a190-1d89df0ff88b.json',function(data){
          console.log('success');
 
 var foodDiff = "red"
@@ -22,10 +23,10 @@ switch(data.difficulty) {
           foodDiff = "red";
 }
           
-var html = '        <div id="post"  style = "top:'+ (5) + 'vw">                                      \
-    <img id = "postImage" src="postImage/'+data.imageID+'.jpg" >                            \
+var html = '        <div id="post"  style = "top:'+ (5) + 'vw">                             \
+    <img id = "postImage"  >                                                                \
     <img id = "userImage" src="svg/defualt.svg" onclick="profileClick()">                   \
-    <div id="userName">'+data.userName+'</div>                                              \
+    <div id="userName">'+data.displayName+'</div>                                           \
     <div id="foodTitle">'+data.foodTitle+'</div>                                            \
     <svg id="foodDifficulty">                                                               \
         <circle cx="50%" cy="50%" r="30%" fill="'+foodDiff+'"/>                             \
@@ -87,7 +88,7 @@ var html = '        <div id="post"  style = "top:'+ (5) + 'vw">                 
     html += '<input id="createReviewText" type="text" placeholder="write your review here!">'+ "</div>";
     
     document.getElementById("review").innerHTML += html;
-
+    document.getElementById("postImage").src = data.image
             
 })
 

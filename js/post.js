@@ -81,7 +81,9 @@ const subJSON = (ev)=>{
 		difficulty: diffsel,
 		ingredients: jsonIngred,
     }
-	json.push(obj);
+    
+    console.log(obj.imageFile)
+    
 
     //Reset form
 	document.forms[0].reset();
