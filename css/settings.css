@@ -1,0 +1,162 @@
+
+body {
+    background-color:  rgb(245, 245, 245);
+    overflow: hidden;
+}
+
+#buttonCancel {
+    position: fixed;
+    bottom:2%;
+    right: 25%;
+    background-color:  rgb(245, 245, 245);
+     padding: 2vh 4vh;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 4vh;
+     cursor: pointer;
+     
+     color: grey;
+     border: 1px solid grey;
+     border-radius: 3px;
+
+}
+
+#buttonSave {
+    position: fixed;
+    bottom:2%;
+    right: 10%;
+    background-color:  rgb(245, 245, 245);
+     padding: 2vh 4vh;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 4vh;
+     cursor: pointer;
+     
+     color: grey;
+     border: 1px solid grey;
+     border-radius: 3px;
+
+}
+
+.settings{
+    background-color:  rgb(255, 255, 255);
+	max-width:800px;
+	min-width:600px;
+    width: 50%;
+    height: 75%;
+
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    
+    margin-right: auto;
+    margin-left: auto;
+    
+    overflow-y: auto;
+	scrollbar: hidden;
+    z-index: -1;
+}
+
+/*more needs to be added to handle dif browsers*/
+.settings::-webkit-scrollbar {
+ display: none;
+}
+.columnContainer {
+	margin: 1.5vh 0vh;
+	overflow:hidden;
+}
+#col1 {
+	float:left;
+	position:relative;
+	width: 40%;
+
+	display: inline-block;
+	
+	margin: 1%;
+}
+
+#col2 {
+	float:left;
+	position:absolute;
+	width: 50%;
+
+	display: inline-block;
+	
+	margin: 5% 1%;
+}
+label {
+	top:40%;
+	position:relative;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+
+#DifficultyContainer {
+	position:relative;
+	height: 50px;
+}
+
+#DifficultyScale1 {
+	position:absolute;
+	display:inline-block;
+	top:40%;
+	width: 40%;
+	height: 50%;
+	font-size:4vh;
+	color:grey;
+	text-decoration:none
+}
+
+textarea {
+	width:95%;
+	height: 10%;
+}
+
+
+#Container0 {
+	display:inline-block;
+	width:100%;
+}
+
+#Container1 {
+	display:inline-block;
+	width:100%;
+}
+
+#input {
+	color:lightgray;
+}
+#remTag {
+	display:none;
+}
+
+
+#profileImage {
+	display:block;
+    position: relative;
+
+  
+   width: 100%;
+
+}
+
+#goBack {
+    position: absolute;
+    bottom:0%;
+    left: 0%;
+
+     font-size: 5vh;
+     cursor: pointer;
+     
+     color: rgb(146, 226, 200);
+     border: 0px solid rgb(0, 0, 0);
+     background-color:  rgba(146, 226, 200,0);
+     z-index:20;
+}
