@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">       
+		 <title>reciposts</title>
+        <link rel="stylesheet" type="text/css" href="css/settings.css">
+        <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
+        <link rel="stylesheet" type="text/css" href="css/filter.css">
+            
+        <script src="js/jquery-3.3.1.js"></script>
+
+        
+        
+    </head>
+    <body>
+        
+        <div class="top_Navigation">
+            <div id = "tittle">Reciposts</div>
+            
+            <div id = "searchBar" >
+                <img id = "searchImg" src="svg/search.svg" onclick='searchClick()'>
+                <input id = "searchText" type="text">
+            </div>
+                
+            <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
+                
+            <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
+        </div>
+        
+ 
+		<!--############## Post Entry #################-->
+        <div class = "settings" >
+			<form autocomplete="off" action="Post">
+				<div id = "col1">
+			
+			<!--Image Upload-->
+				<img id = "profileImage" src="svg/emptyImage.svg">
+					<div class="columnContainer">
+						<label for = "imgImport">Import Profile Image</label>
+						<input id = "imgImport" type = "file" accept = "image/*" onchange="encodeImageFileAsURL(this)" required >
+					</div>
+			
+			<!--DO NOT NEED (for settings) -->			
+			<!--Description Input-->
+					<div class="columnContainer">
+					</div>
+			
+			<!--DO NOT NEED (for settings) -->
+			<!--Instruction Input-->
+					<div class="columnContainer">
+					</div>
+				</div>
+			
+				<div id = "col2">
+			
+			<!--Title Input-->
+					<div id="titleContainer" class="columnContainer">
+						<label for="recititle">Username</label>
+						<input id = "recititle" placeholder = "" required>
+					</div>
+				
+					<div id="titleContainer" class="columnContainer">
+						<label for="recititle">Full Name</label>
+						<input id = "recititle" placeholder = "" required>
+					</div>		
+
+					<div id="titleContainer" class="columnContainer">
+						<label for="recititle">Email</label>
+						<input id = "recititle" placeholder = "" required>
+					</div>
+
+					<div id="titleContainer" class="columnContainer">
+						<label for="recititle">Password</label>
+						<input id = "recititle" placeholder = "New Password" required>
+					</div>
+
+					<div id="titleContainer" class="columnContainer">
+						<label for="recititle">Password</label>
+						<input id = "recititle" placeholder = "Re-Enter New Password" required>
+					</div>				
+				</div>
+
+				<!--Submit Button (save)-->
+				<button id="buttonSave">Save</button>
+
+				<!--Submit Button (cancel)-->
+				<button id="buttonCancel">Cancel</button>
+			</form>
+        </div>
+        <input id = "goBack" type="button" value="&#x2190;" onclick="history.back()">
+
+       <script src="js/post.js"></script>
+        <script src="js/filter.js"></script>
+        <script src="js/timeFilter.js"></script>
+
+    </body>
+</html>
