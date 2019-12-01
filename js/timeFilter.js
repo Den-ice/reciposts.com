@@ -1,3 +1,5 @@
+var timeCompare = 0 ;
+
 var x, i, j, selElmnt, a, b, c;
 /*look for any elements with the class "timeFilter-select":*/
 x = document.getElementsByClassName("timeFilter-select");
@@ -25,6 +27,9 @@ for (i = 0; i < x.length; i++) {
         for (i = 0; i < s.length; i++) {
           if (s.options[i].innerHTML == this.innerHTML) {
             s.selectedIndex = i;
+                       
+            timeCompare = i;
+
             h.innerHTML = this.innerHTML;
             y = this.parentNode.getElementsByClassName("same-as-selected");
             for (k = 0; k < y.length; k++) {

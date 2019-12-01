@@ -4,7 +4,7 @@ function profileClick() {
 function JSONtoRecipeDisplay(id) {
     
 //add logic to chnage recipost id
-$.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_a8408cf0-0fa3-11ea-a190-1d89df0ff88b.json',function(data){
+$.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+id+'.json',function(data){
          console.log('success');
 
 var foodDiff = "red"
