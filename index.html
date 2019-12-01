@@ -46,7 +46,6 @@
 
         <div id = "Filter" >
             
-            <div id = "FilterTxt" >Filter</div>
             <div id = "DifficultyTxt" >Difficulty:</div>
 
             <div id="DifficultyScale">
@@ -80,7 +79,44 @@
                 <input id = "min" type="number">
 
             </div>
+            
+            <div id="spacerForFilter">
+            </div>
 
+            
+            <div id="addTags">
+                <div id="addTagsTxt">Tags:</div>
+                <input id = "addTagTxt" type="string">
+                <div id="addTagButtion" onclick='addTags()'>+</div>
+
+            </div>
+            
+            <div id="Tagslist"> </div>
+            
+            <div id = "ingredientsTXT" >Ingredients:</div>
+            
+            <div id = "ingredientsList" >
+                <div id = "MustHave" >
+                    <div id = "MustHaveTXT" >Must Have:</div>
+                    
+                    <input id="addMustHaveTxt"type="string">
+                    <div id="addIngredientButtion" onclick='addMUSTHave()'>+</div>
+                    <div id = "MustList" >
+
+                    </div>
+                
+                </div>
+                <div id = "CANNOTHave" >
+                    <div id = "CANNOTHaveTXT" >CANNOT Have:</div>
+                    
+                    <input id="addCANNOTTxt"type="string">
+                    <div id="addIngredientButtion" onclick='addCANNOTHave()'>+</div>
+                    <div id = "CANNOTList" >
+                        
+                     </div>
+                
+                </div>
+            </div>
         
         </div>
 

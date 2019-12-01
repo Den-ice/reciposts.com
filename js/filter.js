@@ -68,12 +68,12 @@ function searchClick() {
                         
     var myJSON  = JSON.stringify({
         "foodTitle": document.getElementById("searchText").value,
-        "tags" : [],
+        "tags" : filterTags,
         "difficulty" : difficulty,
         "min" : min,
         "timeCompare" : timeCompare,
-        "must": ["Raw Cod"],
-        "cannot": ["broccoli"]
+        "must": filterMUSTHave,
+        "cannot": filterCANNOTHave
     });
              
             
@@ -98,4 +98,143 @@ function searchClick() {
     
     
     
+}
+
+
+var filterTags = [];
+function addTags() {
+    
+    if (document.getElementById("addTagTxt").value == ""){
+        return;
+    }
+    
+    var index = filterTags.indexOf(document.getElementById("addTagTxt").value.toLowerCase() )
+    
+    if (index != -1 ){
+        return;
+    }
+    
+    
+    filterTags.push(document.getElementById("addTagTxt").value.toLowerCase())
+    
+    document.getElementById("Tagslist").innerHTML = "";
+    
+    var html = ""
+    for (var i =0; i < filterTags.length; i++){
+        
+        html += '<div id = "tagTxt" style = "top:'+i * 7+'vw;">'+filterTags[i]+'</div>\
+        <div id="deleteTagButtion" style = "top:'+i * 7+'vw;" onclick="deleteTags('+i +')">x</div>'
+        
+    }
+    document.getElementById("Tagslist").innerHTML = html;
+
+    
+}
+
+function deleteTags(index) {
+    filterTags.splice(index, 1);
+    var html = ""
+       for (var i =0; i < filterTags.length; i++){
+           
+           html += '<div id = "tagTxt" style = "top:'+i * 7+'vw;">'+filterTags[i]+'</div>\
+           <div id="deleteTagButtion" style = "top:'+i * 7+'vw;" onclick="deleteTags('+i +')">x</div>'
+           
+       }
+       document.getElementById("Tagslist").innerHTML = html;
+
+}
+
+var filterCANNOTHave = [];
+
+function addCANNOTHave() {
+    
+    if (document.getElementById("addCANNOTTxt").value == ""){
+        return;
+    }
+    
+    var index1 = filterMUSTHave.indexOf(document.getElementById("addCANNOTTxt").value.toLowerCase() )
+    var index2 = filterCANNOTHave.indexOf(document.getElementById("addCANNOTTxt").value.toLowerCase() )
+    
+    if (index1 != -1 || index2 != -1){
+        return;
+    }
+    
+    filterCANNOTHave.push(document.getElementById("addCANNOTTxt").value.toLowerCase() )
+    
+    document.getElementById("CANNOTList").innerHTML = "";
+    
+    var html = ""
+    for (var i =0; i < filterCANNOTHave.length; i++){
+        
+        html += '<div id = "IngredientTxt" style = "top:'+ (i * 4 + 1.5)+'vw;">'+filterCANNOTHave[i]+'</div>\
+        <div id="deleteIngredientButtion" style = "top:'+i * 4+'vw;" onclick="deleteCANNOTHave('+i +')">x</div>'
+        
+    }
+    document.getElementById("CANNOTList").innerHTML = html;
+
+    
+}
+
+function deleteCANNOTHave(index) {
+    filterCANNOTHave.splice(index, 1);
+    var html = ""
+       document.getElementById("CANNOTList").innerHTML = "";
+       
+       var html = ""
+       for (var i =0; i < filterCANNOTHave.length; i++){
+           
+           html += '<div id = "IngredientTxt" style = "top:'+ (i * 4 + 1.5)+'vw;">'+filterCANNOTHave[i]+'</div>\
+           <div id="deleteIngredientButtion" style = "top:'+i * 4+'vw;" onclick="deleteCANNOTHave('+i +')">x</div>'
+           
+       }
+       document.getElementById("CANNOTList").innerHTML = html;
+
+}
+
+
+var filterMUSTHave = [];
+
+function addMUSTHave() {
+    
+    if (document.getElementById("addMustHaveTxt").value == ""){
+        return;
+    }
+    
+    var index1 = filterMUSTHave.indexOf(document.getElementById("addMustHaveTxt").value.toLowerCase() )
+    var index2 = filterCANNOTHave.indexOf(document.getElementById("addMustHaveTxt").value.toLowerCase() )
+
+    if (index1 != -1 || index2 != -1){
+        return;
+    }
+    
+    filterMUSTHave.push(document.getElementById("addMustHaveTxt").value.toLowerCase() )
+    
+    document.getElementById("MustList").innerHTML = "";
+    
+    var html = ""
+    for (var i =0; i < filterMUSTHave.length; i++){
+        
+        html += '<div id = "IngredientTxt" style = "top:'+ (i * 4 + 1.5)+'vw;">'+filterMUSTHave[i]+'</div>\
+        <div id="deleteIngredientButtion" style = "top:'+i * 4+'vw;" onclick="deleteMUSTHave('+i +')">x</div>'
+        
+    }
+    document.getElementById("MustList").innerHTML = html;
+
+    
+}
+
+function deleteMUSTHave(index) {
+    filterMUSTHave.splice(index, 1);
+    var html = ""
+       document.getElementById("MustList").innerHTML = "";
+       
+       var html = ""
+       for (var i =0; i < filterMUSTHave.length; i++){
+           
+           html += '<div id = "IngredientTxt" style = "top:'+ (i * 4 + 1.5)+'vw;">'+filterMUSTHave[i]+'</div>\
+           <div id="deleteIngredientButtion" style = "top:'+i * 4+'vw;" onclick="deleteMUSTHave('+i +')">x</div>'
+           
+       }
+       document.getElementById("MustList").innerHTML = html;
+
 }
