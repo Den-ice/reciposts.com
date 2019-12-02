@@ -55,9 +55,8 @@ $(document).ready(function(){
                           }
                           
                 }).fail(function(jqXHR, textStatus, errorThrown) {
-                        if (errorThrown == "Forbidden"){
-                            CreateNewUser();
-                        }
+                        CreateNewUser(result[0].getValue());
+                        
                 })
 
 
@@ -79,10 +78,10 @@ $(document).ready(function(){
 
 function registerButton() {
   
-  personalname =  document.getElementById("fullName").value;
+  personalname = "name"//document.getElementById("fullName").value;
   username = document.getElementById("email").value;
   
-    if (personalname == "" | username == "" | document.getElementById("password").value == "" ){
+    if (username == "" | document.getElementById("password").value == "" ){
         document.getElementById("signUpInfo").innerHTML = "Please fill all fields"
         throw "Please fill all fields"
     }
@@ -183,7 +182,8 @@ function signInButton() {
 
            document.getElementById("signInInfo").innerHTML = "signed in"
            document.getElementById("signInInfo").style.color = "green";
-            UserIsSignedIn();
+           location.replace("./index.html")
+
       },
 
       onFailure: function(err) {
@@ -196,10 +196,11 @@ function signInButton() {
 
 function UserIsSignedIn(){
     document.getElementById("isSignedIn").style.display = 'block';
+    
 }
 
 
-function CreateNewUser(){
+function CreateNewUser(id){
     
     
     if (cognitoUser != null) {
@@ -213,7 +214,7 @@ function CreateNewUser(){
 
            var myJSON  = JSON.stringify({
                "image": "",
-               "displayName" : personalname
+               "displayName" : ""
            });
                                
                 
@@ -229,7 +230,7 @@ function CreateNewUser(){
 
                      console.log("go to profile.html")
                      //window.location.replace("./profile.html");
-                     window.location.href = "./profile.html?userId="+result[0].getValue();
+                     window.location.href = "./profile.html?userId="+id;
                                           },
                   error: function(response) {
                     console.log(response);
