@@ -25,7 +25,6 @@
         <!--  needed for amazon-->
 
         
-        
     </head>
     <body>
         
@@ -39,7 +38,6 @@
                 
             <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
                 
-            <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
         </div>
         
         <div id = "moveFilter" onclick='moveFilterClick()'> l </div>
@@ -146,6 +144,26 @@
             
 
         </div>
+        
+        <div id="isSignedIn">
+            <a href="#" id="signOutText" onclick='SignOutClick()'> Sign Out</a>
+
+            <img id = "signInUserImage" src="svg/defualt.svg">
+            
+            <div id = "signInUserName"></div>
+            
+            
+            <div id = "followingText">Following</div>
+            <div id = "followingList">
+                <div id = "followingUserName" style = "top:4%;">Pj</div>
+                <img id = "followingUserImage" src="svg/defualt.svg">
+
+            </div>
+
+            
+            
+        </div>
+
         
         <div class="post_list" id = "post_list">
 

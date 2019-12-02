@@ -1,4 +1,6 @@
 
+
+
 function SignUpClick() {
     document.getElementById("signUpBox").style.display = 'block';
     document.getElementById("signInBox").style.display = 'none';
@@ -9,16 +11,78 @@ function SignInClick(){
 }
 
 var username;
-  var password;
-  var personalname;
-  var poolData;
-      
+var password;
+var personalname;
+
+var userJSON;
+
+var poolData = {
+        UserPoolId : _config.cognito.userPoolId, // Your user pool id here
+        ClientId : _config.cognito.clientId // Your client id here
+    };
+var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+var cognitoUser = userPool.getCurrentUser();
+
+
+
+$(document).ready(function(){
+
+    if (cognitoUser != null) {
+            
+        cognitoUser.getSession(function(err, session) {
+            if (err) {
+                alert(err);
+                return;
+            }
+                                                          console.log(session.getIdToken().getJwtToken())
+
+            console.log('session validity: ' + session.isValid());
+            //Set the profile info
+            cognitoUser.getUserAttributes(function(err, result) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                   console.log(result);
+                $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+result[0].getValue()+'.json',function(data){
+                        userJSON = data;
+
+                          document.getElementById("signInUserName").innerHTML = userJSON.displayName;
+                          
+                          if (userJSON.image != ""){
+                            document.getElementById("signInUserImage").src = userJSON.image;
+                          }
+                          
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                        if (errorThrown == "Forbidden"){
+                            CreateNewUser();
+                        }
+                })
+
+
+                       
+                                          
+                                          
+            });
+            
+        });
+    } else {
+        document.getElementById("isSignedIn").style.display = 'none';
+     
+    }
+ });
+
+
+
+
+
 function registerButton() {
   
-  personalnamename =  document.getElementById("fullName").value;
+  personalname =  document.getElementById("fullName").value;
   username = document.getElementById("email").value;
   
-    if (personalnamename == "" | username == "" | document.getElementById("password").value == "" ){
+    if (personalname == "" | username == "" | document.getElementById("password").value == "" ){
         document.getElementById("signUpInfo").innerHTML = "Please fill all fields"
         throw "Please fill all fields"
     }
@@ -50,11 +114,7 @@ function registerButton() {
     
     
 
-  poolData = {
-          UserPoolId : _config.cognito.userPoolId, // Your user pool id here
-          ClientId : _config.cognito.clientId // Your client id here
-      };
-  var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
 
   var attributeList = [];
   
@@ -106,32 +166,24 @@ function signInButton() {
     
   var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
   
-  var poolData = {
-      UserPoolId : _config.cognito.userPoolId, // Your user pool id here
-      ClientId : _config.cognito.clientId, // Your client id here
-  };
-  
-  var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-  
   var userData = {
       Username : document.getElementById("signInEmail").value,
       Pool : userPool,
   };
   
-  var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+  cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
   
   cognitoUser.authenticateUser(authenticationDetails, {
       onSuccess: function (result) {
           var accessToken = result.getAccessToken().getJwtToken();
           console.log(accessToken);
-
+                
                 console.log(result);
             var idToken = result.getIdToken().getJwtToken();
-                               console.log(idToken);
 
            document.getElementById("signInInfo").innerHTML = "signed in"
            document.getElementById("signInInfo").style.color = "green";
-                               
+            UserIsSignedIn();
       },
 
       onFailure: function(err) {
@@ -140,3 +192,63 @@ function signInButton() {
       },
   });
 }
+
+
+function UserIsSignedIn(){
+    document.getElementById("isSignedIn").style.display = 'block';
+}
+
+
+function CreateNewUser(){
+    
+    
+    if (cognitoUser != null) {
+        
+        cognitoUser.getSession(function(err, session) {
+            if (err) {
+                alert(err);
+                return;
+            }
+            console.log("creat user!")
+
+           var myJSON  = JSON.stringify({
+               "image": "",
+               "displayName" : personalname
+           });
+                               
+                
+            console.log(session.getIdToken().getJwtToken())
+              $.ajax({
+                  type: "POST",
+                  url: "https://hgxp26ozo8.execute-api.us-west-2.amazonaws.com/live/User/Create",
+                  crossDomain: true,
+                  dataType: 'json',
+                  headers: {"Content-Type" : "application/json", "Authorization" : session.getIdToken().getJwtToken()},
+                  data:myJSON ,
+                  success: function(response) {
+
+                     console.log("go to profile.html")
+                     //window.location.replace("./profile.html");
+                     window.location.href = "./profile.html?userId="+result[0].getValue();
+                                          },
+                  error: function(response) {
+                    console.log(response);
+                  },
+              });
+                               
+
+                               
+        })
+    }
+        
+}
+
+function SignOutClick(){
+    if (cognitoUser != null) {
+      cognitoUser.signOut();
+      document.getElementById("isSignedIn").style.display = 'none';
+
+    }
+}
+
+

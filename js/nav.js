@@ -11,7 +11,13 @@
         document.getElementById("min").value = "00";
 
      function profileClick() {
-         window.location.href = "./profile.html";
+
+         
+         if (userJSON.userID != null){
+             window.location.href = "./profile.html?userId="+userJSON.userID;
+         } else {
+             window.location.href = "./profile.html";
+         }
      }
 
      

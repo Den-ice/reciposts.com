@@ -68,12 +68,7 @@
     top: 8vw;
     right: 15vw;
     background-color: rgb(146, 226, 200);
-    padding: 2vh 2vh;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 3vw;
-    font-style: normal;
     cursor: pointer;
     color: #f3fffe;
     border: lightseagreen;
@@ -267,4 +262,59 @@
      border: 0px solid rgb(0, 0, 0);
      background-color:  rgba(146, 226, 200,0);
      z-index:20;
+}
+
+#imgImport{
+    
+    position: absolute;
+    top:75%;
+    left: 0%;
+    z-index:20;
+
+    
+}
+
+#newName {
+    position: absolute;
+    top: 7vw;
+    left: 24vw;
+
+    height: 3vw;
+    width: 20vw;
+    
+    outline: none;
+    font-size: 3vw;
+    
+    background-color:  rgba(0, 0, 0,0);
+    z-index:20;
+
+}
+
+#saveNewName{
+    position: absolute;
+
+    font-size: 3vw;
+    color: rgb(146, 226, 200);
+    z-index:20;
+    top: 7vw;
+    left: 45vw;
+    cursor: pointer;
+
+}
+
+
+
+#deleteAcount {
+    height: 7vw;
+    position: absolute;
+    width: 12vw;
+    /* bottom: 26vw; */
+    top: 0vw;
+    right: 0vw;
+    background-color: rgb(146, 226, 200);
+    font-size: 2vw;
+    cursor: pointer;
+    color: #f3fffe;
+    border: lightseagreen;
+    border-radius: 3vw;
 }

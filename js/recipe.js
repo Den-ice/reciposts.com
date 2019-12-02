@@ -153,9 +153,10 @@ function moveReviewClick(){
     }
 }
 
-var number = getUrlVars()["id"];
-JSONtoRecipeDisplay(number)
-
+$(document).ready(function(){
+                  var number = getUrlVars()["id"];
+                  JSONtoRecipeDisplay(number)
+}
 function getUrlVars() {
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
