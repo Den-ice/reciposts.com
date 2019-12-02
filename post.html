@@ -6,12 +6,16 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">        <title>reciposts</title>
         <link rel="stylesheet" type="text/css" href="css/post.css">
         <link rel="stylesheet" type="text/css" href="css/topNavigation.css">
-        <link rel="stylesheet" type="text/css" href="css/filter.css">
-        <link rel="stylesheet" type="text/css" href="css/timeFilter.css">
 
             
         <script src="js/jquery-3.3.1.js"></script>
-
+        <!--  needed for amazon-->
+        <script src="js/jquery-3.3.1.js"></script>
+        <script src="js/amazon/amazon-cognito-auth.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+        <script src="js/amazon/amazon-cognito-identity.js"></script>
+        <script src="js/amazon/config.js"></script>
+        <!--  needed for amazon-->
         
         
     </head>
@@ -27,109 +31,92 @@
                 
             <img id = "profileButton" src="svg/man-user.svg" onclick='profileClick()'>
                 
-            <img id = "notificationButton" src="svg/notification.svg" onclick='notificationClick()'>
         </div>
         
  
 		<!--############## Post Entry #################-->
         <div class = "post" >
-			<form autocomplete="off" action="Post">
-				<div id = "col1">
-			
-			<!--Image Upload-->
-				<img id = "postImage" src="svg/emptyImage.svg">
-					<div class="columnContainer">
-						<label for = "imgImport">Import Image</label>
-						<input id = "imgImport" type = "file" accept = "image/*" onchange="encodeImageFileAsURL(this)" required >
-					</div>
-			
-			<!--Description Input-->
-					<div class="columnContainer">
-						<label for = "desc">Description</label>
-						<textarea id = "desc" placeholder ="Tell us about your recipe!" required></textarea>
-					</div>
-			
-			<!--Instruction Input-->
-					<div class="columnContainer">
-						<label for="Instruc">Instructions</label>
-						<textarea id = "Instruc" placeholder ="Give step by step directions on how you made your recipe!" required></textarea>
-					</div>
-				</div>
-			
-				<div id = "col2">
-			
-			<!--Title Input-->
-					<div id="titleContainer" class="columnContainer">
-						<label for="recititle">Title</label>
-						<input id = "recititle" placeholder = "Name of your recipe" required>
-					</div>
-				
-			<!--Tag Input-->
-					<div id="tagRepeat">
-						<div id="tagContainer0" class="columnContainer" style ="display:block;">
-							<label for = "tags">Tags</label>
-							<input id = "tags" placeholder = "Tag your recipe with keywords">
-							<button id = "appendTag" onclick = 'appendFunc(this)'>+</button>
-						</div>
-					</div>
-			<!--Cook Time Input-->
-					<div id = "cookTimeContainer" class="columnContainer">
-						<label for="cookTime">Cook Time</label>
-						<div id="cookTime">
-							<img id="timeImg" src="svg/clock.svg">
-							<input id = "hour1" type="number" placeholder="HH" min="0" max="12" required>
-							<span> : </span>
-							<input id ="min1" type="number" placeholder="mm" min="0" max="59" required>
-						</div>
-					</div>
-			
-			<!--Difficulty Selection-->
-					<div id = "DifficultyContainer" class="columnContainer">
-						<label for = "DifficultyScale1" >Difficulty:</label>
-			
-						<div id="DifficultyScale1">
-							<svg id="Difficulty1"  height="100%"    width="25%" viewBox="0 0 50 50">
-								<circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="3" id = "1"/>
-							</svg>
-							<svg id="Difficulty2" height="100%"    width="25%" viewBox="0 0 50 50">
-								<circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2"/>
-							</svg>
-							<svg id="Difficulty3" height="100%"    width="25%" viewBox="0 0 50 50">
-								<circle cx="50%" cy="50%" r="40%" fill="orange " stroke ="black" stroke-width="0" id = "3"/>
-							</svg>
-							<svg id="Difficulty4" height="100%"    width="25%" viewBox="0 0 50 50">
-								<circle cx="50%" cy="50%" r="40%" fill="red " stroke ="black" stroke-width="0" id = "4"/>
-							</svg>
-						</div>
-					</div>
-					<div id="ingredAmtRepeat">
-						<div id = "ingredAmtContainer0" class="columnContainer">
-							<div id="ingredContainer">
-								<div id="Container0">
-									<label for= "Ingred">Ingredients</label>
-									<input id = "Ingred">
-								</div>
-								<div id="Container1">
-									<label for = "Amount">Amount</label>
-									<input id = "Amount" type= "number">
-								</div>
-							</div>
-							<div id="appendIngredContainer">
-								<button id ="appendIngredbutton" onclick = 'appendFunc(this)'>+</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<!--Submit Button-->
-				<button id="buttonPost">Post</button>
-			</form>
+            
+            <!--Title Input-->
+            <label id="recititle">Title:</label>
+            <input id = "recititleTXT" placeholder = "Name of your recipe" required>
+            
+            <!--Image Input-->
+
+            <img id = "postImage" src="svg/emptyImage.svg">
+
+			<input id = "imgImport" type = "file" accept = "image/*" onchange="encodeImageFileAsURL(this)" required >
+                
+            <!--Description Input-->
+            <div id="Description">
+                <div>Description:</div>
+                <textarea id = "descTXT" placeholder ="Tell us about your recipe!" required></textarea>
+            </div>
+            
+            <!--Instruction Input-->
+            <div id="Instructions">
+                <div>Instructions</div>
+                <textarea id = "Instruc" placeholder ="Give step by step directions on how you made your recipe!" required></textarea>
+            </div>
+            
+            <!--add Tags -->
+
+            <div id="addTagsTxt">Tags:</div>
+            <input id = "addTagTxt" type="string">
+            <div id="addTagButtion" onclick="addTags()">+</div>
+
+            
+            <div id="Tagslist"> </div>
+                
+            <!--Difficulty Selection-->
+            <div id="Difficultytxt">Difficulty:</div>
+
+            <div id="DifficultyScale1">
+                <svg id="Difficulty1"  height="100%"    width="25%" viewBox="0 0 50 50">
+                    <circle cx="50%" cy="50%" r="40%" fill="Chartreuse " stroke ="black" stroke-width="3" id = "1" onclick="click1();"/>
+                </svg>
+                <svg id="Difficulty2" height="100%"    width="25%" viewBox="0 0 50 50">
+                    <circle cx="50%" cy="50%" r="40%" fill="yellow " stroke ="black" stroke-width="0" id = "2" onclick="click2();"/>
+                </svg>
+                <svg id="Difficulty3" height="100%"    width="25%" viewBox="0 0 50 50">
+                    <circle cx="50%" cy="50%" r="40%" fill="orange " stroke ="black" stroke-width="0" id = "3" onclick="click3();"/>
+                </svg>
+                <svg id="Difficulty4" height="100%"    width="25%" viewBox="0 0 50 50">
+                    <circle cx="50%" cy="50%" r="40%" fill="red " stroke ="black" stroke-width="0" id = "4" onclick="click4();"/>
+                </svg>
+            </div>
+            
+            <!--add Ingreds -->
+
+            <div id="addIngreds">Ingred:</div>
+            <input id = "addIngredsTxt" type="string">
+            <div id="addAmount">Amount:</div>
+            <input id = "addAmountTxt" type="string">
+
+            <div id="addIngredsButtion" onclick="addIngreds()">+</div>
+            
+            <div id="Ingredslist"> </div>
+
+            
+            <!--Cook Time Input-->
+            <div id="CookTimetxt">Cook Time:</div>
+            <img id = "timeClock" src="svg/clock.svg" >
+            
+            <input id = "hour" type="number">
+            <div id = "textColonTime">:</div>
+            <input id = "min" type="number">
+                
+                
+
+                
+                
+           
         </div>
+        <button id="buttonPost" onclick ="postRecipost()">Post</button>
+
         <input id = "goBack" type="button" value="&#x2190;" onclick="history.back()">
 
        <script src="js/post.js"></script>
-        <script src="js/filter.js"></script>
-        <script src="js/timeFilter.js"></script>
 
     </body>
 </html>

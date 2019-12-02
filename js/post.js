@@ -1,4 +1,83 @@
-document.getElementById("searchText").value = "Search Recipes";
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+  });
+  return vars;
+}
+
+
+var poolData = {
+        UserPoolId : _config.cognito.userPoolId, // Your user pool id here
+        ClientId : _config.cognito.clientId // Your client id here
+    };
+var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+var cognitoUser = userPool.getCurrentUser();
+
+
+
+
+$(document).ready(function(){
+                  
+      if (cognitoUser != null) {
+              
+          cognitoUser.getSession(function(err, session) {
+              if (err) {
+                  alert(err);
+                  return;
+              }
+              
+          });
+      }
+     var RecipostId;
+
+      RecipostId = getUrlVars()["RecipostId"];
+
+      if (RecipostId != null){
+          $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+RecipostId+'.json',function(data){
+
+                    document.getElementById("recititleTXT").value = data.foodTitle ;
+                    document.getElementById("hour").value = data.hours;
+                    document.getElementById("min").value = data.min;
+                    document.getElementById("descTXT").value = data.description.replace('<br />', '\n');
+                    document.getElementById("Instruc").value = data.instructions.replace(/<br\s*\/?>/gi, '\n');
+                    
+                    diffsel = data.difficulty + 1;
+                    
+                    if (diffsel == 1){
+                        click1();
+                    } else if (diffsel == 2){
+                        click2();
+                    }else if (diffsel == 3){
+                        click3();
+                    }else if (diffsel == 4){
+                        click4();
+                    }
+                    
+                    
+                    jsonTags = data.tags;
+                    jsonIngreds = data.ingredients;
+                    refreshTags();
+                    console.log("good")
+                    refreshTags();
+                    refreshIng();
+                    
+                    document.getElementById("postImage").src = data.image;
+
+                    
+          })
+      } else {
+        console.log("regular post");
+      }
+});
+
+
+document.getElementById("min").value = "00"
+document.getElementById("hour").value = "0"
+
+var diffsel = 1;
+
 
 //This Function encodes the submitted data as base64 for upload through JSON object
 function encodeImageFileAsURL(element) {
@@ -12,95 +91,265 @@ function encodeImageFileAsURL(element) {
   reader.readAsDataURL(file);
 }
 
-//Global variables used to track the amount of tag and Ingredients and update the html id accordingly 
-var countTag = 0;
-var countIngred = 0;
 
-function appendFunc(elem) {
-	var origElem = elem.parentElement;
-	if(origElem.id.includes("appendIngredContainer"))
-		{origElem = elem.parentElement.parentElement;}
-
-    var patt1 = /[0-9][0-9]?[0-9]?/g;
-	var nums = origElem.id.match(patt1);
-    var modElem = origElem.id.replace(nums, '');
-	var clnElem = origElem.cloneNode(true);
-	if(modElem == "tagContainer"){
-		clnElem.id = modTag + ++countTag;
-	}
-	else{
-		clnElem.id = modElem + ++countIngred;
-	}
-	$(clnElem).insertAfter(origElem);
-}
 //Holds JSON object data
 var json = [];
 
+var jsonTags = [];
+var jsonIngreds =[];
+
 //Converts input data into a JSON string and sends it to the server
-const subJSON = (ev)=>{
-	ev.preventDefault();//Stop default submit event
-		
-	var jsonTag = [];
-	var jsonIngred =[];
-	var diffsel;
-    var date = new Date();
-    var ID = Date.parse(date);
+function postRecipost(){
+    var RecId = getUrlVars()["RecipostId"];
 
-    //Gather values for all tag inputs
-    for(var i=0; i<document.getElementById("tagRepeat").children.length; i++) {
-		var temp = document.getElementById("tagContainer" + i);
-		jsonTag.push(temp.children[1].value);
-	}
+    if (cognitoUser != null && RecId == null) {
+                 
+             cognitoUser.getSession(function(err, session) {
+                 if (err) {
+                     alert(err);
+                     return;
+                 }
+                                    
+                let myJSON = JSON.stringify({
+                    tags :              jsonTags,
+                    ingredients :       jsonIngreds,
+                    foodTitle :         document.getElementById("recititleTXT").value,
+                    difficulty:         diffsel - 1,// <-dynamo
+                    hours :             document.getElementById("hour").value,
+                    min :               document.getElementById("min").value,
+                    description:        document.getElementById("descTXT").value.replace(/\r?\n/g, '<br />'),
+                    instructions:       document.getElementById("Instruc").value.replace(/\r?\n/g, '<br />'),
+                    image:              document.getElementById("postImage").src
+                })
+                $.ajax({
+                    type: "POST",
+                    url: "https://hgxp26ozo8.execute-api.us-west-2.amazonaws.com/live/Recipost/Create",
+                    crossDomain: true,
+                    dataType: 'json',
+                    headers: {"Content-Type" : "application/json", "Authorization" : session.getIdToken().getJwtToken()},
+                    data:myJSON ,
+                    success: function(response) {
+                       console.log(response);
+                       window.location.href = "./profile.html";
 
-    //Gather values for all Ingredient and Amount inputs and place them in an array. Aggregate smaller arrays into one large array 
-	for(var i=0; i<document.getElementById("ingredAmtRepeat").children.length; i++) {
-		var tempAr = [];
-		var temp = document.getElementById("ingredAmtContainer" + i);
-		tempAr.push(temp.children[0].children[0].children[1].value);
-		tempAr.push(temp.children[0].children[1].children[1].value);
-		jsonIngred.push(tempAr);
-    }
+                       },
+                    error: function(response) {
+                      console.log(response);
+                    },
+                });
+        
+                 
+             });
+    } else if (cognitoUser != null && RecId != null){
 
-    //Get difficulty section and place it in a variable.
-	for(var i=1; i<4; i++) {
-		var temp = document.getElementById(i).getAttribute("stroke-width");
-		if(temp != 0)
-		{diffsel = i;}
-    }
+                cognitoUser.getSession(function(err, session) {
+                 if (err) {
+                     alert(err);
+                     return;
+                 }
+                                    
+                let myJSON = JSON.stringify({
+                    RecipostId : RecId,
+                    tags :              jsonTags,
+                    ingredients :       jsonIngreds,
+                    foodTitle :         document.getElementById("recititleTXT").value,
+                    difficulty:         diffsel - 1,// <-dynamo
+                    hours :             document.getElementById("hour").value,
+                    min :               document.getElementById("min").value,
+                    description:        document.getElementById("descTXT").value.replace(/\r?\n/g, '<br />'),
+                    instructions:       document.getElementById("Instruc").value.replace(/\r?\n/g, '<br />'),
+                    image:              document.getElementById("postImage").src
+                })
+                $.ajax({
+                    type: "POST",
+                    url: "https://hgxp26ozo8.execute-api.us-west-2.amazonaws.com/live/Recipost/Edit",
+                    crossDomain: true,
+                    dataType: 'json',
+                    headers: {"Content-Type" : "application/json", "Authorization" : session.getIdToken().getJwtToken()},
+                    data:myJSON ,
+                    success: function(response) {
+                       console.log(response);
+                       window.location.href = "./profile.html";
 
-    //Build JSON object
-	let obj = {
-		postID: ID,
-		imageFile: document.getElementById("imgImport").src,
-		description: document.getElementById("desc").value,
-		directions: document.getElementById("Instruc").value,
-		foodtitle: document.getElementById("recititle").value,
-		tags: jsonTag,
-		hours : document.getElementById("hour1").value,
-		min : document.getElementById("min1").value,
-		difficulty: diffsel,
-		ingredients: jsonIngred,
+                       },
+                    error: function(response) {
+                      console.log(response.body);
+                    },
+                });
+        
+                 
+             });
+        
     }
     
-    console.log(obj.imageFile)
-    
 
-    //Reset form
-	document.forms[0].reset();
-	document.getElementById("postImage").src = "svg/emptyImage.svg";
-	alert("Your form has been successfully submitted.");
-	//localStorage.setItem("MyPostList", JSON.stringify(json));
-
-    //Send data to the server
-	const xhr = new XMLHttpRequest();
-		
-	xhr.open("POST" , "JSON/" +ID+".json");
-	xhr.setRequestHeader("Content-Type" , "application/json");
-	xhr.send(JSON.stringify(json));
+     
 }
 
-//Execute event listner on buttonPost	
-document.addEventListener('DOMContentLoaded',()=>{
-	document.getElementById('buttonPost').addEventListener('click',subJSON);
-});
-			
+
+function click1(){
+    document.getElementById('1').setAttribute("stroke-width", "3");
+    document.getElementById('2').setAttribute("stroke-width", "0");
+    document.getElementById('3').setAttribute("stroke-width", "0");
+    document.getElementById('4').setAttribute("stroke-width", "0");
+
+    diffsel = 1;
+   
+};
+
+function click2(){
+    document.getElementById('1').setAttribute("stroke-width", "0");
+    document.getElementById('2').setAttribute("stroke-width", "3");
+    document.getElementById('3').setAttribute("stroke-width", "0");
+    document.getElementById('4').setAttribute("stroke-width", "0");
+    diffsel = 2;
+    
+
+};
+function click3(){
+    document.getElementById('1').setAttribute("stroke-width", "0");
+    document.getElementById('2').setAttribute("stroke-width", "0");
+    document.getElementById('3').setAttribute("stroke-width", "3");
+    document.getElementById('4').setAttribute("stroke-width", "0");
+    diffsel = 3;
+
+};
+
+function click4(){
+    document.getElementById('1').setAttribute("stroke-width", "0");
+    document.getElementById('2').setAttribute("stroke-width", "0");
+    document.getElementById('3').setAttribute("stroke-width", "0");
+    document.getElementById('4').setAttribute("stroke-width", "3");
+    diffsel = 4;
+
+};
+
+
+function addTags() {
+    
+    if (document.getElementById("addTagTxt").value == ""){
+        return;
+    }
+    
+    var index = jsonTags.indexOf(document.getElementById("addTagTxt").value.toLowerCase() )
+    
+    if (index != -1 ){
+        return;
+    }
+    
+    
+    jsonTags.push(document.getElementById("addTagTxt").value.toLowerCase())
+    
+    document.getElementById("Tagslist").innerHTML = "";
+    
+    var html = ""
+    for (var i =0; i < jsonTags.length; i++){
+        
+        html += '<div id = "tagTxt" style = "top:'+i * 7+'vw;">'+jsonTags[i]+'</div>\
+        <div id="deleteTagButtion" style = "top:'+i * 7+'vw;" onclick="deleteTags('+i +')">x</div>'
+        
+    }
+    document.getElementById("Tagslist").innerHTML = html;
+         
+}
+
+function refreshTags(){
+    document.getElementById("Tagslist").innerHTML = "";
+    
+    var html = ""
+    for (var i =0; i < jsonTags.length; i++){
+        
+        html += '<div id = "tagTxt" style = "top:'+i * 7+'vw;">'+jsonTags[i]+'</div>\
+        <div id="deleteTagButtion" style = "top:'+i * 7+'vw;" onclick="deleteTags('+i +')">x</div>'
+        
+    }
+    document.getElementById("Tagslist").innerHTML = html;
+    
+}
+
+
+function deleteTags(index) {
+    jsonTags.splice(index, 1);
+    var html = ""
+       for (var i =0; i < jsonTags.length; i++){
+           
+           html += '<div id = "tagTxt" style = "top:'+i * 7+'vw;">'+jsonTags[i]+'</div>\
+           <div id="deleteTagButtion" style = "top:'+i * 7+'vw;" onclick="deleteTags('+i +')">x</div>'
+           
+       }
+       document.getElementById("Tagslist").innerHTML = html;
+
+}
+
+
+
+
+
+
+
+function addIngreds() {
+    
+    if (document.getElementById("addIngredsTxt").value == ""){
+        return;
+    }
+    
+    var index = -1;
+
+    for (var i =0; i < jsonIngreds.length; i++){
+
+        if (document.getElementById("addIngredsTxt").value.toLowerCase() == jsonIngreds[i][0]){
+            index = i;
+            break;
+        }
+    }
+    
+    
+    if (index != -1 ){
+        return;
+    }
+    
+    
+    jsonIngreds.push([document.getElementById("addIngredsTxt").value.toLowerCase(),document.getElementById("addAmountTxt").value])
+    
+    document.getElementById("Ingredslist").innerHTML = "";
+    
+    var html = ""
+    for (var i =0; i < jsonIngreds.length; i++){
+        
+        html += '<div id = "IngredsTxt" style = "top:'+i * 7+'vw;">'+jsonIngreds[i][0]+'</div>\
+        <div id = "AmountTxt" style = "top:'+i * 7+'vw;">'+jsonIngreds[i][1]+'</div>\
+        <div id="deleteIngredsButtion" style = "top:'+i * 7+'vw;" onclick="deleteIngreds('+i +')">x</div>'
+        
+    }
+    document.getElementById("Ingredslist").innerHTML = html;
+         
+}
+
+function refreshIng(){
+    document.getElementById("Ingredslist").innerHTML = "";
+    
+    var html = ""
+    for (var i =0; i < jsonIngreds.length; i++){
+        
+        html += '<div id = "IngredsTxt" style = "top:'+i * 7+'vw;">'+jsonIngreds[i][0]+'</div>\
+        <div id = "AmountTxt" style = "top:'+i * 7+'vw;">'+jsonIngreds[i][1]+'</div>\
+        <div id="deleteIngredsButtion" style = "top:'+i * 7+'vw;" onclick="deleteIngreds('+i +')">x</div>'
+        
+    }
+    document.getElementById("Ingredslist").innerHTML = html;
+    
+}
+
+function deleteIngreds(index) {
+    jsonIngreds.splice(index, 1);
+    var html = ""
+       for (var i =0; i < jsonIngreds.length; i++){
+           
+           html += '<div id = "IngredsTxt" style = "top:'+i * 7+'vw;">'+jsonIngreds[i][0]+'</div>\
+           <div id = "AmountTxt" style = "top:'+i * 7+'vw;">'+jsonIngreds[i][1]+'</div>\
+           <div id="deleteIngredsButtion" style = "top:'+i * 7+'vw;" onclick="deleteIngreds('+i +')">x</div>'
+           
+       }
+       document.getElementById("Ingredslist").innerHTML = html;
+
+}

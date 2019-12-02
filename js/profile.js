@@ -26,6 +26,9 @@ $(document).ready(function(){
                   
                   document.getElementById("ToPostPage").style.display = 'none';
                   document.getElementById("imgImport").style.display = 'none';
+                  document.getElementById("deleteAcount").style.display = 'none';
+                  document.getElementById("newName").style.display = 'none';
+                  document.getElementById("saveNewName").style.display = 'none';
 
                   
                   var userId = getUrlVars()["userId"];
@@ -89,7 +92,10 @@ function profileClick(){
      comments: [],
      rating: []
  };
- */ToPostPage
+ */
+
+var MypostLength = 0;
+
 function makeProfile(userId){
     
     console.log("makeProfile");
@@ -112,12 +118,52 @@ function makeProfile(userId){
               if (userProfile){
                 document.getElementById("ToPostPage").style.display = 'block';
                 document.getElementById("imgImport").style.display = 'block';
-              
-                document.getElementById("newName").value = profileJSON.displayName;
+                document.getElementById("deleteAcount").style.display = 'block';
+                document.getElementById("newName").style.display = 'block';
+                document.getElementById("saveNewName").style.display = 'block';
 
+                document.getElementById("newName").value = profileJSON.displayName;
               }
               
-    })
+              document.getElementById("myrecipesList").innerHTML = "";
+
+              var post = profileJSON.post;
+              var following = profileJSON.following;
+              
+              MypostLength = 0;
+              for (var i = 0 ; i < post.length; i++){
+
+                $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+post[i]+'.json',function(data){
+                          var i = profileJSON.post.indexOf(data.id)
+
+                          var whatToDisplay = "svg/emptyImage.svg";
+                          if (data.image != ""){
+                                    whatToDisplay = data.image
+                          }
+                          document.getElementById("myrecipesList").innerHTML += '<img id = "postImage" src="'+whatToDisplay+'" style = "top:'+ MypostLength * 50 + 'vw">'
+                          var id = data.id;
+                          if (userProfile){
+                            document.getElementById("myrecipesList").innerHTML += '<div id="deleteRecipost" style = "top:'+ MypostLength * 50 + 'vw" onclick="deleteRecipost('+i+')">Delete</div>'
+                            document.getElementById("myrecipesList").innerHTML += '<div id="deleteRecipost" style = "top:'+ (MypostLength * 50 + 5 ) + 'vw" onclick="editRecipost('+i+')">Edit</div>'
+                          }
+                          MypostLength++;
+
+
+                          
+                })
+              }
+              
+              for (var i = 0 ; i < following.length; i++){
+                $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+following[i]+'.json',function(data){
+                  if (data.image != ""){
+                          document.getElementById("favoritesList").innerHTML += '<img id = "postImage" src="'+data.image+'" >'
+                  } else {
+                          document.getElementById("favoritesList").innerHTML += '<img id = "postImage" src="svg/emptyImage.svg" >'
+                  }
+                })
+              }
+              
+    } )
     
 }
 
@@ -233,4 +279,54 @@ function deleteUser(){
 
         
     }
+}
+
+
+function deleteRecipost(id){
+    
+    if (confirm('Are you 100% sure? This will erase your Recipost and can never be undone!')) {
+        if (cognitoUser != null) {
+            
+            cognitoUser.getSession(function(err, session) {
+                if (err) {
+                    alert(err);
+                    return;
+                }
+
+               var myJSON  = JSON.stringify({    "RecipostId" : profileJSON.post[id]});
+                         
+                  $.ajax({
+                      type: "POST",
+                      url: "https://hgxp26ozo8.execute-api.us-west-2.amazonaws.com/live/Recipost/Delete",
+                      crossDomain: true,
+                      dataType: 'json',
+                      headers: {"Content-Type" : "application/json", "Authorization" : session.getIdToken().getJwtToken()},
+                      data:myJSON ,
+                      success: function(response) {
+                         console.log(response);
+                         
+
+                         },
+                      error: function(response) {
+                        console.log(response);
+                      },
+                  });
+                                   
+
+                                   
+            })
+            
+            
+            
+            
+        }
+
+        
+    }
+
+}
+
+function editRecipost(id){
+    window.location.href = "./post.html?RecipostId=" + profileJSON.post[id];
+
 }

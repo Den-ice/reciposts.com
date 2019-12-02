@@ -156,9 +156,9 @@
 
 #myrecipes {
     position: absolute;
-    left: 29vw;
+    left: 14vw;
     top: 6vw;
-    font-size: 2.5vw;
+    font-size: 4vw;
     color: grey;
     text-decoration:none;
 
@@ -166,9 +166,9 @@
 
 #favorites {
     position: absolute;
-    right: 29vw;
+    right: 14vw;
     top: 6vw;
-    font-size: 2.5vw;
+    font-size: 4vw;
     color: grey;
     text-decoration:none;
 
@@ -317,4 +317,61 @@
     color: #f3fffe;
     border: lightseagreen;
     border-radius: 3vw;
+}
+
+
+#myrecipesList{
+
+    width: 45%;
+    height: 80%;
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    left: 5%;
+    margin-top: 36vw;
+    margin-bottom: auto;
+    z-index: -1;
+
+}
+#favoritesList{
+    position: relative;
+
+    width: 45%;
+    height: 80%;
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    right: 5%;
+    margin-top: 36vw;
+    margin-bottom: auto;
+    z-index: -1;
+}
+#postImage {
+    position: absolute;
+    bottom: 0px;
+
+    width: 100%;
+
+     object-fit: contain;
+
+}
+
+
+
+
+#deleteRecipost{
+    position: absolute;
+    top: 0px;
+    height: 4vw;
+    width: 8vw;
+    right: 0px;
+    
+    font-size: 3vw;
+    text-align: center;
+
+    outline: none;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+    color: rgb(146, 226, 200);
+    border: 5px solid rgb(146, 226, 200);;
 }

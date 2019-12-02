@@ -57,22 +57,13 @@
                 </div>
                 <button id="ToPostPage" onclick="postClick()">Post</button>
                 <div class="pages">
-                    <a href="profile.html" id="myrecipes" onclick="ProfileClick()">My Recipes</a>
-                    <a href="profile_favorites.html" id="favorites" onclick="ProfileClick()">Favorites</a>
+                    <div  id="myrecipes" >My Recipes</div>
+                    <div  id="favorites">Favorites</div>
                 </div>
 
             </div>
-            <div class="myimages">
-                    <div id="gridlayout" style="bottom:5vw">
-                        <img id="MyR1" src="postImage/MyR1.jpeg">
-                        <img id="MyR2" src="postImage/MyR2.jpeg">
-                        <img id="MyR3" src="postImage/MyR3.jpg">
-                        <img id="MyR4" src="postImage/MyR4.jpg">
-                        <img id="MyR5" src="postImage/MyR5.jpg">
-                        <img id="MyR6" src="postImage/MyR6.jpg">
-
-                    </div>
-                </div>
+            <div id="myrecipesList"></div>
+            <div id="favoritesList"></div>
 
         </div>
         <input id = "goBack" type="button" value="&#x2190;" onclick="window.history.back();">

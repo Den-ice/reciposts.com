@@ -88,7 +88,11 @@ var html = '        <div id="post"  style = "top:'+ (5) + 'vw">                 
     html += '<input id="createReviewText" type="text" placeholder="write your review here!">'+ "</div>";
     
     document.getElementById("review").innerHTML += html;
-    document.getElementById("postImage").src = data.image
+    if (data.image != ""){
+        document.getElementById("postImage").src = data.image;
+    } else {
+        document.getElementById("postImage").src = "svg/emptyImage.svg";
+    }
             
 })
 
@@ -156,7 +160,7 @@ function moveReviewClick(){
 $(document).ready(function(){
                   var number = getUrlVars()["id"];
                   JSONtoRecipeDisplay(number)
-}
+})
 function getUrlVars() {
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {

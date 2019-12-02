@@ -62,6 +62,11 @@ document.getElementById("4").onclick = function (e) {
            }
 };
 
+$(document).ready(function(){
+searchClick()
+                  
+                  });
+
 function searchClick() {
 
     var min = Math.ceil(Number(document.getElementById("hour").value) * 60 +  (Number(document.getElementById("min").value)))
@@ -82,7 +87,9 @@ function searchClick() {
         url: "https://hgxp26ozo8.execute-api.us-west-2.amazonaws.com/live/Recipost/Search",
         crossDomain: true,
         dataType: 'json',
-        headers: {"Content-Type" : "application/json"},
+        headers: {"Content-Type" : "application/json",
+           'Access-Control-Allow-Origin': '*'
+           },
         dataType: 'json',
         data:myJSON ,
         success: function(response) {

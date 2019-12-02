@@ -23,8 +23,13 @@ function JSONtoPostList(id, index, postCount) {
               foodDiff = "red";
     }
               
+    var whatToDisplay = "svg/emptyImage.svg";
+    if (data.image != ""){
+              whatToDisplay = data.image
+    }
+              
     var html = '        <div id="post"  style = "top:'+ (5 + postCount*50) + 'vw"   onclick="goToRecipe('+index+')">                                      \
-        <img id = "postImage" src="'+data.image+'" >                            \
+        <img id = "postImage" src="'+whatToDisplay+'" >                            \
         <img id = "userImage" src="svg/defualt.svg">                   \
         <div id="userName">'+data.displayName+'</div>                                              \
         <div id="foodTitle">'+data.foodTitle+'</div>                                            \
@@ -73,24 +78,6 @@ var myJSON  = JSON.stringify({
 });
          
         
-$.ajax({
-    type: "POST",
-    url: "https://hgxp26ozo8.execute-api.us-west-2.amazonaws.com/live/Recipost/Search",
-    crossDomain: true,
-    dataType: 'json',
-    headers: {"Content-Type" : "application/json"},
-    dataType: 'json',
-    data:myJSON ,
-    success: function(response) {
-      recipostsList = JSON.parse(response.body).reciposts;
-       
-      goToPage(1);
-       
-    },
-    error: function(response) {
-      console.log(response);
-    },
-});
 
 function goToPage(page){
     document.getElementById("post_list").innerHTML = "";

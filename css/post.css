@@ -7,13 +7,13 @@ body {
 #buttonPost {
     position: fixed;
     bottom:2%;
-    right: 25%;
+    right: 2%;
     background-color:  rgb(245, 245, 245);
-     padding: 2vh 4vh;
+     padding: 1vh 2vh;
      text-align: center;
      text-decoration: none;
      display: inline-block;
-     font-size: 4vh;
+     font-size: 3vh;
      cursor: pointer;
      
      color: grey;
@@ -23,25 +23,15 @@ body {
 }
 
 .post{
-    background-color:  rgb(255, 255, 255);
-	max-width:800px;
-	min-width:600px;
-    width: 50%;
-    height: 75%;
+    
+    width: 100%;
+    height: 80%;
 
     position: absolute;
-    bottom: 0px;
-    top: 0px;
+    top: 10%;
     left: 0px;
-    right: 0px;
 
-    margin-top: auto;
-    margin-bottom: auto;
-    
-    margin-right: auto;
-    margin-left: auto;
-    
-    overflow-y: auto;
+    overflow-y: scroll;
 	scrollbar: hidden;
     z-index: -1;
 }
@@ -80,25 +70,49 @@ label {
 	font-weight:bold;
 }
 
-#DifficultyContainer {
-	position:relative;
-	height: 50px;
-}
 
+#Difficultytxt {
+    position:absolute;
+    top:10vw;
+    left:41vw;
+    font-size: 4vw;
+
+}
 #DifficultyScale1 {
 	position:absolute;
 	display:inline-block;
-	top:40%;
-	width: 40%;
-	height: 50%;
-	font-size:4vh;
-	color:grey;
-	text-decoration:none
+	top:14vw;
+    left:41vw;
+
+	width: 25%;
 }
 
-textarea {
-	width:95%;
-	height: 10%;
+#Difficulty1{
+    width: 20%;
+    height: 100%;
+    
+    object-fit: contain;
+}
+
+#Difficulty2{
+    width: 20%;
+    height: 100%;
+    object-fit: contain;
+
+}
+
+#Difficulty3{
+    width: 20%;
+    height: 100%;
+    object-fit: contain;
+
+}
+
+#Difficulty4{
+    width: 20%;
+    height: 100%;
+    object-fit: contain;
+
 }
 
 
@@ -154,16 +168,69 @@ textarea {
 	display:inline-block;
 }
 
-#cookTimeContainer {
-	height: 15%;
+
+#timeClock{
+    position: absolute;
+
+    left: 41%;
+    top: 25vw;
+    width: 5%;
+
+    object-fit: contain;
+
+     position: absolute;
+    
+}
+#textColonTime {
+    
+    position: absolute;
+    left: 53%;
+    top: 22vw;
+    
+    font-size: 8vw;
+    text-align: center;
+    color: black;
 }
 
-#hour1, #min1 {
-	width:20%;
+#hour {
+    position: absolute;
+    left: 47%;
+    top: 25vw;
+    
+    height: 5vw;
+    width: 5%;
+    
+    outline: none;
+    border: transparent;
+    font-size: 3vw;
+    text-align: center;
+}
+#min {
+   position: absolute;
+   left: 55%;
+   top: 25vw;
+   
+   height: 5vw;
+   width: 7%;
+   
+   outline: none;
+   border: transparent;
+   font-size: 3vw;
+   text-align: center;
 }
 
-#
-input {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+#input {
 	color:lightgray;
 /*	border-color:#e6e6e6; */
 }
@@ -178,9 +245,12 @@ input {
 #postImage {
 	display:block;
     position: relative;
-
+    position: absolute;
+    top:6vw;
+    left: 0%;
   
-   width: 100%;
+   width: 40vw;
+   height: 40vw;
 
 }
 
@@ -196,4 +266,319 @@ input {
      border: 0px solid rgb(0, 0, 0);
      background-color:  rgba(146, 226, 200,0);
      z-index:20;
+}
+
+#recititle {
+    position: absolute;
+    top:0%;
+    left: 0%;
+
+     font-size: 4vw;
+     cursor: pointer;
+     
+     color: rgb(146, 226, 200);
+     border: 0px solid rgb(0, 0, 0);
+     background-color:  rgba(146, 226, 200,0);
+     z-index:20;
+}
+#recititleTXT {
+    position: absolute;
+    top:0%;
+    left: 10%;
+
+     font-size: 4vw;
+     
+     outline: none;
+     border: transparent;
+     z-index:20;
+}
+#imgImport {
+    position: absolute;
+    top:47vw;
+    left: 0%;
+
+}
+
+#Description{
+    position: absolute;
+    top:60vw;
+    left: 0%;
+    width: 100%;
+    font-size: 5vw;
+    
+    color: rgb(146, 226, 200);
+}
+#descTXT{
+    position: absolute;
+    top:5vw;
+    resize: none;
+    width: 100%;
+    height: 10vw;
+    outline: none;
+    border: transparent;
+}
+
+
+
+#addTagsTxt {
+    position: absolute;
+    top: 6vw;
+    right: 28vw;
+    
+
+    font-size: 4vw;
+    color: grey;
+    text-decoration: none;
+
+}
+
+#addTagTxt {
+    position: absolute;
+    top: 6vw;
+    right: 10vw;
+    
+    height: 5vw;
+    width: 15vw;
+    
+    font-size: 3vw;
+
+    outline: none;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+
+}
+
+#addTagButtion {
+    position: absolute;
+    top: 5vw;
+
+    height: 5vw;
+    width: 5vw;
+    right: 2vw;
+    
+    font-size: 4vw;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(146, 226, 200);
+    border: 5px solid rgb(146, 226, 200);;
+}
+
+
+#Tagslist{
+    position: absolute;
+    top: 13vw;
+    right: 1%;
+    color: grey;
+    text-decoration: none;
+    width: 35%;
+    height: 17vw;
+    
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgb(255, 255, 255);
+
+
+}
+#Tagslist::-webkit-scrollbar {
+ display: none;
+}
+
+#deleteTagButtion {
+    position: absolute;
+
+    height: 4vw;
+    width: 4vw;
+    right: 2.5vw;
+    
+    font-size: 3vw;
+    text-align: center;
+
+    outline: none;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+    color: rgb(146, 226, 200);
+    border: 5px solid rgb(146, 226, 200);;
+}
+
+#tagTxt {
+    position: absolute;
+
+    left: 2vw;
+    
+    font-size: 5vw;
+    text-align: center;
+
+    outline: none;
+    border: transparent;
+    color: rgb(146, 226, 200);
+}
+#Instructions{
+    position: absolute;
+    top:80vw;
+    left: 0%;
+    width: 100%;
+    font-size: 5vw;
+    
+    color: rgb(146, 226, 200);
+}
+#Instruc{
+    position: absolute;
+    top:5vw;
+    resize: none;
+    width: 100%;
+    height: 50vw;
+    outline: none;
+    border: transparent;
+        overflow-y: scroll;
+        scrollbar: hidden;
+}
+
+/*more needs to be added to handle dif browsers*/
+#Instruc::-webkit-scrollbar {
+display: none;
+}
+
+
+#CookTimetxt {
+    position:absolute;
+    top:20vw;
+    left:41vw;
+    font-size: 4vw;
+
+}
+
+
+
+
+
+
+
+#addIngreds {
+    position: absolute;
+    top: 33vw;
+    right: 50vw;
+    
+    font-size: 3vw;
+    color: grey;
+    text-decoration: none;
+
+}
+
+#addAmount {
+    position: absolute;
+    top: 33vw;
+    right: 23vw;
+    
+    font-size: 3vw;
+    color: grey;
+    text-decoration: none;
+
+}
+
+#addIngredsTxt {
+    position: absolute;
+    top: 32vw;
+    right: 35vw;
+    
+    height: 5vw;
+    width: 14vw;
+    
+    font-size: 3vw;
+
+    outline: none;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+
+}
+
+#addAmountTxt {
+    position: absolute;
+    top: 32vw;
+    right: 10vw;
+    
+    height: 5vw;
+    width: 12vw;
+    
+    font-size: 3vw;
+
+    outline: none;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+
+}
+#addIngredsButtion {
+    position: absolute;
+    top: 31vw;
+
+    height: 5vw;
+    width: 5vw;
+    right: 2vw;
+    
+    font-size: 4vw;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(146, 226, 200);
+    border: 5px solid rgb(146, 226, 200);;
+}
+
+
+#Ingredslist{
+    position: absolute;
+    top: 39vw;
+    right: 1%;
+    color: grey;
+    text-decoration: none;
+    width: 57%;
+    height: 20vw;
+    
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgb(255, 255, 255);
+
+
+}
+#Ingredslist::-webkit-scrollbar {
+ display: none;
+}
+
+#deleteIngredsButtion {
+    position: absolute;
+
+    height: 4vw;
+    width: 4vw;
+    right: 1vw;
+    
+    font-size: 3vw;
+    text-align: center;
+
+    outline: none;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+    color: rgb(146, 226, 200);
+    border: 5px solid rgb(146, 226, 200);;
+}
+
+#IngredsTxt {
+    position: absolute;
+
+    left: 2vw;
+    
+    font-size: 5vw;
+    text-align: center;
+
+    outline: none;
+    border: transparent;
+    color: rgb(146, 226, 200);
+}
+#AmountTxt {
+    position: absolute;
+
+    right: 10vw;
+    
+    font-size: 5vw;
+    text-align: center;
+
+    outline: none;
+    border: transparent;
+    color: rgb(146, 226, 200);
 }
