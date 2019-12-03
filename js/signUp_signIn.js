@@ -45,7 +45,7 @@ $(document).ready(function(){
                     return;
                 }
                    console.log(result);
-                $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+result[0].getValue()+'.json',function(data){
+                $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+result[0].getValue()+'.json?nocache=' + (new Date()).getTime(),function(data){
                         userJSON = data;
 
                           document.getElementById("signInUserName").innerHTML = userJSON.displayName;

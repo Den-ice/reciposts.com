@@ -47,7 +47,7 @@ $(document).ready(function(){
                                 console.log(err);
                                 return;
                             }
-                            $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+result[0].getValue()+'.json',function(data){
+                            $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+result[0].getValue()+'.json?nocache=' + (new Date()).getTime(),function(data){
                                       userJSON = data;
                             })
                                                        
@@ -95,7 +95,7 @@ function profileClick(){
  */
 
 var MypostLength = 0;
-
+var FavoritesLength = 0;
 function makeProfile(userId){
     
     console.log("makeProfile");
@@ -103,7 +103,7 @@ function makeProfile(userId){
     console.log(userProfile);
     console.log(userLogedIn);
     
-    $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+userId+'.json',function(data){
+    $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+userId+'.json?nocache=' + (new Date()).getTime(),function(data){
             profileJSON = data;
 
               document.getElementById("username").innerHTML = profileJSON.displayName;
@@ -128,38 +128,49 @@ function makeProfile(userId){
               document.getElementById("myrecipesList").innerHTML = "";
 
               var post = profileJSON.post;
-              var following = profileJSON.following;
+              var favorites = profileJSON.favorites;
               
               MypostLength = 0;
+              console.log(post);
+
               for (var i = 0 ; i < post.length; i++){
 
-                $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+post[i]+'.json',function(data){
+                $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+post[i]+'.json?nocache=' + (new Date()).getTime(),function(data){
                           var i = profileJSON.post.indexOf(data.id)
 
                           var whatToDisplay = "svg/emptyImage.svg";
                           if (data.image != ""){
                                     whatToDisplay = data.image
                           }
-                          document.getElementById("myrecipesList").innerHTML += '<img id = "postImage" src="'+whatToDisplay+'" style = "top:'+ MypostLength * 50 + 'vw">'
+                          document.getElementById("myrecipesList").innerHTML += '<img id = "postImage" src="'+whatToDisplay+'" style = "top:'+ MypostLength * 50 + 'vw" onclick="goToRecipe('+i+')">'
                           var id = data.id;
                           if (userProfile){
                             document.getElementById("myrecipesList").innerHTML += '<div id="deleteRecipost" style = "top:'+ MypostLength * 50 + 'vw" onclick="deleteRecipost('+i+')">Delete</div>'
                             document.getElementById("myrecipesList").innerHTML += '<div id="deleteRecipost" style = "top:'+ (MypostLength * 50 + 5 ) + 'vw" onclick="editRecipost('+i+')">Edit</div>'
                           }
                           MypostLength++;
-
+                          document.getElementById("postcount").innerHTML = MypostLength;
 
                           
                 })
+
               }
               
-              for (var i = 0 ; i < following.length; i++){
-                $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+following[i]+'.json',function(data){
+              FavoritesLength = 0;
+              
+              console.log(favorites);
+              
+              for (var i = 0 ; i < favorites.length; i++){
+                $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+favorites[i]+'.json?nocache=' + (new Date()).getTime(),function(data){
+                   var i = profileJSON.favorites.indexOf(data.id)
+
                   if (data.image != ""){
-                          document.getElementById("favoritesList").innerHTML += '<img id = "postImage" src="'+data.image+'" >'
+                          document.getElementById("favoritesList").innerHTML += '<img id = "postImage" src="'+data.image+'"style = "top:'+ FavoritesLength * 50 + 'vw" onclick="goToFavRecipe('+i+')">'
                   } else {
-                          document.getElementById("favoritesList").innerHTML += '<img id = "postImage" src="svg/emptyImage.svg" >'
+                          document.getElementById("favoritesList").innerHTML += '<img id = "postImage" src="svg/emptyImage.svg"style = "top:'+ FavoritesLength * 50 + 'vw" >'
                   }
+                FavoritesLength ++;
+                          
                 })
               }
               
@@ -208,6 +219,7 @@ function editUser(){
                   data:myJSON ,
                   success: function(response) {
                      console.log(response);
+                     location.reload();
                      },
                   error: function(response) {
                     console.log(response);
@@ -304,7 +316,7 @@ function deleteRecipost(id){
                       data:myJSON ,
                       success: function(response) {
                          console.log(response);
-                         
+                         location.reload();
 
                          },
                       error: function(response) {
@@ -329,4 +341,12 @@ function deleteRecipost(id){
 function editRecipost(id){
     window.location.href = "./post.html?RecipostId=" + profileJSON.post[id];
 
+}
+
+function goToRecipe(id){
+          window.location.href = "./recipe.html?id="+profileJSON.post[id]+"&";
+}
+
+function goToFavRecipe(id){
+          window.location.href = "./recipe.html?id="+profileJSON.favorites[id]+"&";
 }

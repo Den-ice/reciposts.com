@@ -35,7 +35,7 @@ $(document).ready(function(){
       RecipostId = getUrlVars()["RecipostId"];
 
       if (RecipostId != null){
-          $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+RecipostId+'.json',function(data){
+          $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+RecipostId+'.json?nocache=' + (new Date()).getTime(),function(data){
 
                     document.getElementById("recititleTXT").value = data.foodTitle ;
                     document.getElementById("hour").value = data.hours;
@@ -168,9 +168,15 @@ function postRecipost(){
                     headers: {"Content-Type" : "application/json", "Authorization" : session.getIdToken().getJwtToken()},
                     data:myJSON ,
                     success: function(response) {
-                       console.log(response);
-                       window.location.href = "./profile.html";
-
+                       if (response.body != null){
+                           postRecipost()
+                           console.log("try again")
+                       
+                       } else {
+                            window.location.href = "./profile.html";
+                            console.log("good")
+                       }
+                       
                        },
                     error: function(response) {
                       console.log(response.body);

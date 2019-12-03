@@ -87,9 +87,7 @@ function searchClick() {
         url: "https://hgxp26ozo8.execute-api.us-west-2.amazonaws.com/live/Recipost/Search",
         crossDomain: true,
         dataType: 'json',
-        headers: {"Content-Type" : "application/json",
-           'Access-Control-Allow-Origin': '*'
-           },
+        headers: {"Content-Type" : "application/json"},
         dataType: 'json',
         data:myJSON ,
         success: function(response) {

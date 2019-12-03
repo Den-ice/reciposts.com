@@ -4,7 +4,7 @@ var recipostsList = [];
 
 function JSONtoPostList(id, index, postCount) {
 
-    $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+id+'.json',function(data){
+    $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+id+'.json?nocache=' + (new Date()).getTime(),function(data){
              console.log('success');
 
     var foodDiff = "red"
@@ -42,7 +42,7 @@ function JSONtoPostList(id, index, postCount) {
               var sum = 0;
               
       for( var i = 0; i < data.rating.length; i++ ){
-          sum += parseInt( data.rating[i], 10 ); //don't forget to add the base
+          sum += parseInt( data.rating[i].rated, 10 ); //don't forget to add the base
       }
         var rating = Math.round(sum /data.rating.length)
 

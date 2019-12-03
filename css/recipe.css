@@ -358,3 +358,42 @@ body {
      background-color:  rgba(146, 226, 200,0);
      z-index:20;
 }
+
+#followButtion {
+    position: absolute;
+    top: 23vw;
+    
+    height: 4vw;
+    width: 23vw;
+    right: 1vw;
+    
+    font-size: 3vw;
+    text-align: center;
+    
+    outline: none;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+    color: rgb(146, 226, 200);
+    border: 5px solid rgb(146, 226, 200);;
+    z-index:20;
+
+}
+
+#buttonPostReviewDelete {
+    position: absolute;
+    top:0%;
+    right: 0%;
+    background-color:  rgb(146, 226, 200);
+     padding: 0vh 1vh;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 1.5vh;
+     cursor: pointer;
+     
+     color: white;
+     border: 1px solid rgb(146, 226, 200);
+     border-radius: 3px;
+     z-index:20;
+
+}
