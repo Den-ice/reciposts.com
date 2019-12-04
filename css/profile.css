@@ -375,3 +375,24 @@
     color: rgb(146, 226, 200);
     border: 5px solid rgb(146, 226, 200);;
 }
+
+
+#followButtion {
+    position: absolute;
+    top: 18vw;
+    
+    height: 4vw;
+    width: 15vw;
+    right: 1vw;
+    
+    font-size: 3vw;
+    text-align: center;
+    
+    outline: none;
+    border: transparent;
+    background-color: rgb(255, 255, 255);
+    color: rgb(146, 226, 200);
+    border: 5px solid rgb(146, 226, 200);;
+    z-index:20;
+
+}

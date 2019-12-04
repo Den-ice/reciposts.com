@@ -87,9 +87,24 @@ function encodeImageFileAsURL(element) {
 	var base64Src = reader.result;
 	document.getElementById("imgImport").src = base64Src;
 	document.getElementById("postImage").src = base64Src;
+    formatUserImage();
 	}
   reader.readAsDataURL(file);
 }
+function formatUserImage() {
+    var canvas = document.createElement("canvas");
+     var ctx = canvas.getContext("2d");
+     var img = document.getElementById("postImage");
+
+    ctx.canvas.width  = 200;
+    ctx.canvas.height = 200;
+    ctx.drawImage(img, 0, 0, 200, 200);
+    document.getElementById("postImage").src = canvas.toDataURL()
+    document.getElementById("imgImport").src = canvas.toDataURL()
+
+}
+
+
 
 
 //Holds JSON object data

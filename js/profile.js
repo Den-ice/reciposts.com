@@ -21,17 +21,18 @@ var cognitoUser = userPool.getCurrentUser();
 
 var userJSON;
 var profileJSON;
-
+var userId;
 $(document).ready(function(){
-                  
+                  userId = getUrlVars()["userId"];
+
                   document.getElementById("ToPostPage").style.display = 'none';
                   document.getElementById("imgImport").style.display = 'none';
                   document.getElementById("deleteAcount").style.display = 'none';
                   document.getElementById("newName").style.display = 'none';
                   document.getElementById("saveNewName").style.display = 'none';
+                  document.getElementById("followButtion").style.display = 'none';
 
                   
-                  var userId = getUrlVars()["userId"];
 
                   if (cognitoUser != null) {
                           
@@ -49,14 +50,39 @@ $(document).ready(function(){
                             }
                             $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+result[0].getValue()+'.json?nocache=' + (new Date()).getTime(),function(data){
                                       userJSON = data;
+                                      
+                                      
+                                      result[0].getValue()
+                                      if (userId == null || userId == result[0].getValue()){
+                                          userProfile = true
+                                          userId = result[0].getValue();
+                                      } else {
+                                        console.log("hello");
+
+                                          document.getElementById("followButtion").style.display = 'block';
+                                          console.log(userJSON.following);
+                                            console.log(userId);
+                                           
+                                          var index = -1;
+                                          for (var i = 0; i < userJSON.following.length; i++){
+                                              if (userJSON.following[i].userID == userId){
+                                                index = i;
+                                                break;
+                                              }
+                                          }
+                                      
+                                      
+                                          if (index == -1 ){
+                                              document.getElementById("followButtion").innerHTML = "follow";
+                                          }
+
+                                      }
+                                      makeProfile(userId)
+                                      
+                                      
                             })
                                                        
-                            result[0].getValue()
-                            if (userId == null || userId == result[0].getValue()){
-                                userProfile = true
-                                userId = result[0].getValue();
-                            }
-                            makeProfile(userId)
+
                              
                           });
                           
@@ -185,13 +211,27 @@ function encodeImageFileAsURL(element) {
     reader.onloadend = function() {
         var base64Src = reader.result;
         document.getElementById("defaultprofile").src = base64Src;
+        var img = document.getElementById("defaultprofile");
         userJSON.image =base64Src
-        editUser();
+        formatUserImage();
     }
     reader.readAsDataURL(file);
 }
 
+function formatUserImage(base64Src) {
+    var canvas = document.createElement("canvas");
+     var ctx = canvas.getContext("2d");
+     var img = document.getElementById("defaultprofile");
 
+    ctx.canvas.width  = 100;
+    ctx.canvas.height = 100;
+    ctx.drawImage(img, 0, 0, 100, 100);
+    document.getElementById("defaultprofile").src = canvas.toDataURL()
+    userJSON.image =canvas.toDataURL();
+
+    editUser();
+
+}
 
 function editUser(){
     
@@ -349,4 +389,81 @@ function goToRecipe(id){
 
 function goToFavRecipe(id){
           window.location.href = "./recipe.html?id="+profileJSON.favorites[id]+"&";
+}
+
+
+
+
+function followButtion(){
+                    
+          var index = -1;
+          for (var i = 0; i < userJSON.following.length; i++){
+              if (userJSON.following[i].userID == userId){
+                index = i;
+                break;
+              }
+          }
+    
+          if (index == -1 ){
+            console.log("follow")
+            console.log(userId)
+            if (cognitoUser != null) {
+                
+                cognitoUser.getSession(function(err, session) {
+                    if (err) {
+                        alert(err);
+                        return;
+                    }
+
+                   var myJSON  = JSON.stringify({    "userID" : userId});
+                             
+                      $.ajax({
+                          type: "POST",
+                          url: "https://hgxp26ozo8.execute-api.us-west-2.amazonaws.com/live/Post/Follow",
+                          crossDomain: true,
+                          dataType: 'json',
+                          headers: {"Content-Type" : "application/json", "Authorization" : session.getIdToken().getJwtToken()},
+                          data:myJSON ,
+                          success: function(response) {
+                             location.reload();
+
+                             console.log(response);
+                             },
+                          error: function(response) {
+                            console.log(response);
+                          },
+                      });
+                })
+            }
+          } else {
+                console.log("unfollow")
+                if (cognitoUser != null) {
+                  
+                  cognitoUser.getSession(function(err, session) {
+                      if (err) {
+                          alert(err);
+                          return;
+                      }
+
+                     var myJSON  = JSON.stringify({    "userID" : userId});
+
+                        $.ajax({
+                            type: "POST",
+                            url: "https://hgxp26ozo8.execute-api.us-west-2.amazonaws.com/live/Post/UnFollow",
+                            crossDomain: true,
+                            dataType: 'json',
+                            headers: {"Content-Type" : "application/json", "Authorization" : session.getIdToken().getJwtToken()},
+                            data:myJSON ,
+                            success: function(response) {
+                               console.log(response);
+                               location.reload();
+
+                               },
+                            error: function(response) {
+                              console.log(response);
+                            },
+                        });
+                  })
+                }
+          }
 }
