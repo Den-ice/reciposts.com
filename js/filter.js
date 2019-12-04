@@ -14,12 +14,17 @@ function moveFilterClick(){
         document.getElementById("moveFilter").innerHTML = "<<";
         
         document.getElementById("Filter").style.right = "-35%";
+        
+        document.getElementById("Filter").style.width = "0%";
+
 
     } else {
         document.getElementById("moveFilter").style.right = "35%";
         document.getElementById("moveFilter").innerHTML = ">>";
         
         document.getElementById("Filter").style.right = "0%";
+
+        document.getElementById("Filter").style.width = "35%";
 
     }
 }
