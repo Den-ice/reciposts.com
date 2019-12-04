@@ -15,10 +15,20 @@ var userJSON;
 var recipostJSON;
 
 $(document).ready(function(){
+                  
  var number = getUrlVars()["id"];
 
   document.getElementById("followButtion").style.display = 'none';
 
+   document.getElementById("starPickTittle").style.display = 'none';
+   document.getElementById("starPick1").style.display = 'none';
+   document.getElementById("starPick2").style.display = 'none';
+   document.getElementById("starPick3").style.display = 'none';
+   document.getElementById("starPick4").style.display = 'none';
+   document.getElementById("starPick5").style.display = 'none';
+
+                  
+                  
   var userId = getUrlVars()["userId"];
 
   if (cognitoUser != null) {
@@ -53,7 +63,7 @@ $(document).ready(function(){
           });
           
       });
-  } else if (userId != null){
+  } else if (number != null){
     JSONtoRecipeDisplay(number)
   }
 });
@@ -68,111 +78,132 @@ function JSONtoRecipeDisplay(id) {
     
 //add logic to chnage recipost id
 $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/recipost_'+id+'.json?nocache=' + (new Date()).getTime(),function(data){
-         console.log('success');
-recipostJSON = data;
-var foodDiff = "red"
-          
-switch(data.difficulty) {
-    case 1:
-        foodDiff = "Chartreuse";
-        break;
-    case 2:
-        foodDiff = "yellow";
-        break;
-    case 3:
-        foodDiff = "orange";
-        break;
-    default:
-          foodDiff = "red";
-}
-          
-var html = '        <div id="post"  style = "top:'+ (5) + 'vw">                             \
-    <img id = "postImage"  >                                                                \
-    <img id = "userImage" src="svg/defualt.svg" onclick="profileClick()">                   \
-    <div id="userName">'+data.displayName+'</div>                                           \
-    <div id="foodTitle">'+data.foodTitle+'</div>                                            \
-    <svg id="foodDifficulty">                                                               \
-        <circle cx="50%" cy="50%" r="30%" fill="'+foodDiff+'"/>                             \
-    </svg>                                                                                  \
-    <img id = "clock" src="svg/clock.svg" >                                                 \
-    <div id="time">'+data.hours+'h '+data.min+'m</div>'
-        
-          var sum = 0;
-       console.log(data.rating);
-  for( var i = 0; i < data.rating.length; i++ ){
-      sum += parseInt( data.rating[i].rated, 10 ); //don't forget to add the base
-  }
-    var rating = Math.round(sum /data.rating.length)
-    
-      for (i = 1; i <= 5; i++) {
-        var star = "star"
-          if (i <= rating){
-                star += "Green"
-          }
-            
-        html += '<img id = "star'+i+'" src="svg/'+star+'.svg">'
-      }
-    html += '<div id="description">'+data.description+'</div>';
-    
-    var instructions = data.instructions;
-                                    
-    instructions = instructions.replace(/\n/g, "<br>");
-                            
-    
-    html += '<div id="recipe_steps"> <h3>Instructions</h3>'+instructions+'</div>';
-    html += '<div id="ingredients"> <h3>Ingredients</h3>  ' ;
-                            
-    ingridents = data.ingredients;
-      
-    for( var i = 0; i < ingridents.length; i++ ){
-        html += data.ingredients[i][0];
-        html +=   "&nbsp;";
-       
-        html += data.ingredients[i][1] + "<br>"; //don't forget to add the base
-    }
-                            
-    html +='</div> </div>    </div>';
-                            
-    document.getElementById("recipe").innerHTML += html;
-                            
-    html = "";
-    
-                           
-    for( var i = 0; i < data.comment.length; i++ ){
-        html += '<div id="reviewPost" style = "top:'+ (i*25 + 5) + '%">'
 
-        if (userJSON!= null && data.comment[i].userID == userJSON.userID){
-            html += '<button id="buttonPostReviewDelete" onclick="UserDeleteComment('+i+')">Delete</button>'
-        }
-                            
-        html += '<div id="reviewTextName" >&nbsp;' +data.comment[i].displayName + ": </div>";
-        html += '<div id="reviewText" >&nbsp;' +data.comment[i].comment + " </div>" + "</div>";
+          
+    $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+data.authorId+'.json?nocache=' + (new Date()).getTime(),function(userData){
+              
+    var profileImageRecipost = "svg/defualt.svg"
+              
+    if (userData.image != ""){
+        profileImageRecipost = userData.image
+    }
+          
+    recipostJSON = data;
+    var foodDiff = "red"
+              
+    switch(data.difficulty) {
+        case 1:
+            foodDiff = "Chartreuse";
+            break;
+        case 2:
+            foodDiff = "yellow";
+            break;
+        case 3:
+            foodDiff = "orange";
+            break;
+        default:
+              foodDiff = "red";
+    }
+              
+    var html = '        <div id="post"  style = "top:'+ (5) + 'vw">                             \
+        <img id = "postImage"  >                                                                \
+        <img id = "userImage" src="'+profileImageRecipost+'" onclick="goToRecipesProfile(\''+data.authorId+'\')">                   \
+        <div id="userName" onclick="goToRecipesProfile(\''+data.authorId+'\')">'+data.displayName+'</div>                                           \
+        <div id="foodTitle">'+data.foodTitle+'</div>                                            \
+        <svg id="foodDifficulty">                                                               \
+            <circle cx="50%" cy="50%" r="30%" fill="'+foodDiff+'"/>                             \
+        </svg>                                                                                  \
+        <img id = "clock" src="svg/clock.svg" >                                                 \
+        <div id="time">'+data.hours+'h '+data.min+'m</div>'
             
-       
-    }
-    html += '<div id="reviewPost" style = "top:'+ ((data.comment.length)*25 + 5) + '%">'
-    html += '<div id="reviewTextName" >&nbsp;' +  userJSON.displayName + ": </div>";
-    html += '<button id="buttonPostReview" onclick="UserCreateComment()">Post</button>'
-    html += '<input id="createReviewText" type="text" placeholder="write your review here!">'+ "</div>";
-    
-    document.getElementById("review").innerHTML += html;
-    if (data.image != ""){
-        document.getElementById("postImage").src = data.image;
-    } else {
-        document.getElementById("postImage").src = "svg/emptyImage.svg";
-    }
+              var sum = 0;
+           console.log(data.rating);
+      for( var i = 0; i < data.rating.length; i++ ){
+          sum += parseInt( data.rating[i].rated, 10 ); //don't forget to add the base
+      }
+        var rating = Math.round(sum /data.rating.length)
+        
+          for (i = 1; i <= 5; i++) {
+            var star = "star"
+              if (i <= rating){
+                    star += "Green"
+              }
+                
+            html += '<img id = "star'+i+'" src="svg/'+star+'.svg">'
+          }
+        html += '<div id="description">'+data.description+'</div>';
+        
+        var instructions = data.instructions;
+                                        
+        instructions = instructions.replace(/\n/g, "<br>");
+                                
+        
+        html += '<div id="recipe_steps"> <h3>Instructions</h3>'+instructions+'</div>';
+        html += '<div id="ingredients"> <h3>Ingredients</h3>  ' ;
+                                
+        ingridents = data.ingredients;
+          
+        for( var i = 0; i < ingridents.length; i++ ){
+            html += data.ingredients[i][0];
+            html +=   "&nbsp;";
            
-    if (userLogedIn == true){
-        var index = userJSON.favorites.indexOf(recipostJSON.id)
-        document.getElementById("followButtion").style.display = 'block';
-        document.getElementById("reviewTextName").innerHTML = userJSON.displayName;
-                            
-        if (index == -1 ){
-            document.getElementById("followButtion").innerHTML = "add to fav";
+            html += data.ingredients[i][1] + "<br>"; //don't forget to add the base
         }
-    }
+                                
+        html +='</div> </div>    </div>';
+                                
+        document.getElementById("recipe").innerHTML += html;
+                                
+        html = "";
+        
+                               
+        for( var i = 0; i < data.comment.length; i++ ){
+            html += '<div id="reviewPost" style = "top:'+ (i*25 + 5) + '%">'
+
+            if (userJSON!= null && data.comment[i].userID == userJSON.userID){
+                html += '<button id="buttonPostReviewDelete" onclick="UserDeleteComment('+i+')">Delete</button>'
+            }
+                                
+            html += '<div id="reviewTextName" >&nbsp;' +data.comment[i].displayName + ": </div>";
+            html += '<div id="reviewText" >&nbsp;' +data.comment[i].comment + " </div>" + "</div>";
+                
+           
+        }
+             
+        if (userJSON!= null){
+            html += '<div id="reviewPost" style = "top:'+ ((data.comment.length)*25 + 5) + '%">'
+
+            html += '<div id="reviewTextName" >&nbsp;' +  userJSON.displayName + ": </div>";
+
+            html += '<button id="buttonPostReview" onclick="UserCreateComment()">Post</button>'
+            html += '<input id="createReviewText" type="text" placeholder="write your review here!">'+ "</div>";
+
+        }
+        document.getElementById("review").innerHTML += html;
+        if (data.image != ""){
+            document.getElementById("postImage").src = data.image;
+        } else {
+            document.getElementById("postImage").src = "svg/emptyImage.svg";
+        }
+               
+        if (userLogedIn == true){
+            var index = userJSON.favorites.indexOf(recipostJSON.id)
+            document.getElementById("followButtion").style.display = 'block';
+            document.getElementById("reviewTextName").innerHTML = userJSON.displayName;
+                              
+            document.getElementById("starPickTittle").style.display = 'block';
+            document.getElementById("starPick1").style.display = 'block';
+            document.getElementById("starPick2").style.display = 'block';
+            document.getElementById("starPick3").style.display = 'block';
+            document.getElementById("starPick4").style.display = 'block';
+            document.getElementById("starPick5").style.display = 'block';
+                                
+            if (index == -1 ){
+                document.getElementById("followButtion").innerHTML = "add to fav";
+            }
+        }
                             
-            
+     })
 })
 
 }
@@ -438,4 +469,20 @@ function UserDeleteComment(index) {
                     });
               })
           }
+}
+
+
+
+
+function goToRecipesProfile(id){
+    
+    console.log(id);
+          window.location.href = "./profile.html?userId="+id+"&";
+}
+
+
+
+function searchClick() {
+          
+    window.location.href = "./index.html?foodTitle=" + document.getElementById("searchText").value;
 }

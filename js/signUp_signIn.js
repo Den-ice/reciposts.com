@@ -35,7 +35,7 @@ $(document).ready(function(){
                 alert(err);
                 return;
             }
-                                                          console.log(session.getIdToken().getJwtToken())
+            console.log(session.getIdToken().getJwtToken())
 
             console.log('session validity: ' + session.isValid());
             //Set the profile info
@@ -47,6 +47,7 @@ $(document).ready(function(){
                    console.log(result);
                 $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+result[0].getValue()+'.json?nocache=' + (new Date()).getTime(),function(data){
                         userJSON = data;
+                          makeFollowinglist();
 
                           document.getElementById("signInUserName").innerHTML = userJSON.displayName;
                           
@@ -253,3 +254,28 @@ function SignOutClick(){
 }
 
 
+var FollowinglistNumber = 0;
+
+function makeFollowinglist(){
+    FollowinglistNumber = 0;
+    //document.getElementById("followingList").innerHTML = "";
+
+    for (var i =0; i < userJSON.following.length; i++){
+        
+        $.getJSON('https://s3-us-west-2.amazonaws.com/recipost.json/user_'+userJSON.following[i].userID+'.json?nocache=' + (new Date()).getTime(),function(userData){
+                  
+            var profileImageRecipost = "svg/defualt.svg"
+                      
+            if (userData.image != ""){
+                profileImageRecipost = userData.image
+            }
+
+            document.getElementById("followingList").innerHTML += '<div id = "followingUserName" style = "top:'+(4 + FollowinglistNumber * 12)+'%;" onclick="goToRecipesProfile(\''+userData.userID+'\')"  >'+userData.displayName+'</div>\
+            <img id = "followingUserImage" src="'+profileImageRecipost+'" style = "top:'+(FollowinglistNumber * 12)  +'%;" onclick="goToRecipesProfile(\''+userData.userID+'\')" >'
+            
+            FollowinglistNumber ++;
+        })
+
+    }
+    
+}

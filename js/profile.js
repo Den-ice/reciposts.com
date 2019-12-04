@@ -467,3 +467,12 @@ function followButtion(){
                 }
           }
 }
+
+function profileClick() {
+    window.location.href = "./profile.html";
+}
+
+function searchClick() {
+          
+    window.location.href = "./index.html?foodTitle=" + document.getElementById("searchText").value;
+}

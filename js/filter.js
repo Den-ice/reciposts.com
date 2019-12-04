@@ -1,4 +1,11 @@
 
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+  });
+  return vars;
+}
 
 function moveFilterClick(){
     moveFilter
@@ -63,9 +70,31 @@ document.getElementById("4").onclick = function (e) {
 };
 
 $(document).ready(function(){
-searchClick()
+                  var searchInfo = getUrlVars();
+                  if (searchInfo["foodTitle"] != null){
+                    document.getElementById("searchText").value = searchInfo["foodTitle"]
+                  }
+                  if (searchInfo["tags"] != null){
+                    filterTags = searchInfo["tags"]
+                  }
+                  if (searchInfo["difficulty"] != null){
+                    difficulty = searchInfo["difficulty"]
+                  }
+                  if (searchInfo["min"] != null){
+                    min = searchInfo["min"]
+                  }
+                  if (searchInfo["timeCompare"] != null){
+                    timeCompare = searchInfo["timeCompare"]
+                  }
+                  if (searchInfo["must"] != null){
+                    filterMUSTHave = searchInfo["must"]
+                  }
+                  if (searchInfo["cannot"] != null){
+                    filterCANNOTHave = searchInfo["cannot"]
+                  }
+                  searchClick()
                   
-                  });
+});
 
 function searchClick() {
 

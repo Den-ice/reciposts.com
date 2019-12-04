@@ -44,11 +44,11 @@ function JSONtoPostList(id, index, postCount) {
             <img id = "postImage" src="'+whatToDisplay+'" onclick="goToRecipe('+index+')">                            \
             <img id = "userImage" onclick="goToRecipesProfile(\''+data.authorId+'\')" src="'+profileImageRecipost+'">                   \
             <div id="userName" onclick="goToRecipesProfile(\''+data.authorId+'\')">'+data.displayName+'</div>                                              \
-            <div id="foodTitle">'+data.foodTitle+'</div>                                            \
-            <svg id="foodDifficulty">                                                               \
+            <div id="foodTitle"onclick="goToRecipe('+index+')">'+data.foodTitle+'</div>                                            \
+            <svg id="foodDifficulty"onclick="goToRecipe('+index+')">                                                               \
                 <circle cx="50%" cy="50%" r="30%" fill="'+foodDiff+'"/>                             \
             </svg>                                                                                  \
-            <img id = "clock" src="svg/clock.svg" >                                                 \
+            <img id = "clock" src="svg/clock.svg" onclick="goToRecipe('+index+')">                                                 \
             <div id="time">'+data.hours+'h '+data.min+'m</div>'
                 
                   var sum = 0;
@@ -64,9 +64,9 @@ function JSONtoPostList(id, index, postCount) {
                         star += "Green"
                   }
                     
-                html += '<img id = "star'+i+'" src="svg/'+star+'.svg">'
+                html += '<img id = "star'+i+'" src="svg/'+star+'.svg" onclick="goToRecipe('+index+')">'
               }
-            html += '<div id="description">'+data.description+'</div> </div>';
+            html += '<div id="description" onclick="goToRecipe('+index+')">'+data.description+'</div> </div>';
             document.getElementById("post_list").innerHTML += html;
            
             
