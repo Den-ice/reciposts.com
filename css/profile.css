@@ -20,7 +20,7 @@
 #background_border {
     background-color: rgb(255, 255, 255);
     width: 90vw;
-    height: 31vw;
+    height: 40vw;
     position: absolute;
     left: 5%;
      
@@ -66,7 +66,7 @@
     width: 12vw;
     /* bottom: 26vw; */
     top: 8vw;
-    right: 15vw;
+    right: 0vw;
     background-color: rgb(146, 226, 200);
     font-size: 3vw;
     cursor: pointer;
@@ -149,7 +149,7 @@
 .pages {
     background-color:rgba(245, 245, 245, 0);
     width: 90vw;
-    height: 10vw;
+    height: 30vw;
     position: absolute;
     top: 20vw; 
 }
@@ -157,7 +157,7 @@
 #myrecipes {
     position: absolute;
     left: 14vw;
-    top: 6vw;
+    top: 12vw;
     font-size: 4vw;
     color: grey;
     text-decoration:none;
@@ -167,7 +167,7 @@
 #favorites {
     position: absolute;
     right: 14vw;
-    top: 6vw;
+    top: 12vw;
     font-size: 4vw;
     color: grey;
     text-decoration:none;
@@ -267,7 +267,7 @@
 #imgImport{
     
     position: absolute;
-    top:75%;
+    top:60%;
     left: 0%;
     z-index:20;
 
@@ -296,8 +296,8 @@
     font-size: 3vw;
     color: rgb(146, 226, 200);
     z-index:20;
-    top: 7vw;
-    left: 45vw;
+    top: 20vw;
+    right: 3vw;
     cursor: pointer;
 
 }
@@ -325,8 +325,7 @@
     width: 45%;
     height: 80%;
     position: absolute;
-    bottom: 0px;
-    top: 0px;
+    top: 10vw;
     left: 5%;
     margin-top: 36vw;
     margin-bottom: auto;
@@ -339,8 +338,8 @@
     width: 45%;
     height: 80%;
     position: absolute;
-    bottom: 0px;
-    top: 0px;
+     top: 10vw;
+
     right: 5%;
     margin-top: 36vw;
     margin-bottom: auto;
