@@ -87,7 +87,7 @@ function encodeImageFileAsURL(element) {
 	var base64Src = reader.result;
 	document.getElementById("imgImport").src = base64Src;
 	document.getElementById("postImage").src = base64Src;
-    formatUserImage();
+    //formatUserImage();
 	}
   reader.readAsDataURL(file);
 }

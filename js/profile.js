@@ -213,7 +213,9 @@ function encodeImageFileAsURL(element) {
         document.getElementById("defaultprofile").src = base64Src;
         var img = document.getElementById("defaultprofile");
         userJSON.image =base64Src
-        formatUserImage();
+        //formatUserImage();
+        editUser();
+
     }
     reader.readAsDataURL(file);
 }
@@ -229,7 +231,6 @@ function formatUserImage(base64Src) {
     document.getElementById("defaultprofile").src = canvas.toDataURL()
     userJSON.image =canvas.toDataURL();
 
-    editUser();
 
 }
 
